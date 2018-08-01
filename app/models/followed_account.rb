@@ -1,4 +1,4 @@
 class FollowedAccount < ApplicationRecord
   has_many :posts
-  belongs_to :platformß
+  belongs_to :platform
 end
