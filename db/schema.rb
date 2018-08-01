@@ -30,7 +30,11 @@ ActiveRecord::Schema.define(version: 2018_08_01_004011) do
   create_table "posts", force: :cascade do |t|
     t.string "author"
     t.string "content"
+<<<<<<< HEAD
     t.integer "timestamp"
+=======
+    t.string "timestamp"
+>>>>>>> 7b5a94b85c90dc198aecb4342462b0e441162583
     t.string "social_media_platform"
     t.boolean "marked_as_read"
     t.datetime "created_at", null: false
