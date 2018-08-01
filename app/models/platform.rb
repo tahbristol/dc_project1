@@ -1,4 +1,4 @@
 class Platform < ApplicationRecord
-  has_many :tracked_accounts
+  has_many :followed_accounts
   belongs_to :user
 end
