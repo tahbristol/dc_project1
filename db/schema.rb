@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_005753) do
+ActiveRecord::Schema.define(version: 2018_08_07_001604) do
 
   create_table "followed_accounts", force: :cascade do |t|
     t.integer "account_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_08_01_005753) do
     t.boolean "marked_as_read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "followed_account_id"
   end
 
   create_table "users", force: :cascade do |t|
