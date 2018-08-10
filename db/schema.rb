@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_004011) do
+ActiveRecord::Schema.define(version: 2018_08_10_021848) do
+
+  create_table "feeds", force: :cascade do |t|
+  end
 
   create_table "followed_accounts", force: :cascade do |t|
     t.integer "account_id"
     t.string "account_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "platform_id"
   end
 
   create_table "platforms", force: :cascade do |t|
