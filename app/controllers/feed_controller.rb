@@ -29,7 +29,6 @@ class FeedController < ApplicationController
 				followed_account_id: followed_account_id)
 		end 
 	end
-
 end
 
 
