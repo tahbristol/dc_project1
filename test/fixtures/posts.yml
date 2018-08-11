@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: MyString
+  content: MyString
+  timestamp: 1
+  social_media_platform: MyString
+  marked_as_read: false
+
+two:
+  author: MyString
+  content: MyString
+  timestamp: 1
+  social_media_platform: MyString
+  marked_as_read: false
