@@ -14,7 +14,7 @@ development:
   encoding: unicode
   database: stmarket
   pool: 5
-  username: tyler
+  username: <%= ENV['USERNAME'] %>
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -29,5 +29,5 @@ production:
   encoding: unicode
   database: stmarket
   pool: 5
-  username: tyler
+  username: <%= ENV['USERNAME'] %>
   password:
