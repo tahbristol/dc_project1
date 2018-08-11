@@ -21,7 +21,7 @@ class Feed < ApplicationRecord
 		followed_account_info = client.user(username)
 		platform = Platform.find_or_create_by(name:"Twitter",api_base_url:"https://api.twitter.com/1.1/", user_id: @current_user.id)
 		new_followed_account = FollowedAccount.find_or_create_by(
-			account_id: followed_account_info.id,
+			account_id: followed_account_info.id.to_s,
 			account_name: username,
 			platform_id: platform.id
 		)
@@ -29,7 +29,7 @@ class Feed < ApplicationRecord
 	end
 	
 	def get_tweets(client, followed_account)
-		tweets = client.user_timeline(followed_account.account_id)
+		tweets = client.user_timeline(followed_account.account_id.to_i)
 		binding.pry
 		tweets.each do |tweet|
 			Post.find_or_create_by(
