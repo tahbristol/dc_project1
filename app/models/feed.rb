@@ -1,11 +1,12 @@
 class Feed < ApplicationRecord
 	
 	attr_accessor :current_user
-	
+=begin
 	def initialize(user)
+		binding.pry
 		@current_user = user
 	end
-	
+=end
 	def initTwitterApi
 		client = Twitter::REST::Client.new do |config|
   		config.consumer_key = ENV['CONSUMER_KEY']
