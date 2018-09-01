@@ -4,6 +4,7 @@ import Post from './components/Post';
 import Signup from './components/Signup';
 import NavBar from './components/Navbar';
 import Header from './components/Header';
+import RegisterSection from './components/RegisterSection';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -44,6 +45,7 @@ class App extends Component {
 					<Route exact path="/signup" render={Signup} />
 					<Route exact path="/navbar" render={NavBar} />
 					<Route exact path="/header" render={Header} />
+					<Route exact path="/register_section" render={RegisterSection} />
 				</div>
 			</Router>
     );
