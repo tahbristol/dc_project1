@@ -1,7 +1,7 @@
 class V1::PostsController < ApplicationController
 	def index
 		if current_user
-			@post = [{"author":"tyler", "content":"dev"}]
+			@post = Post.all #[{"author":"tyler", "content":"dev"}, {"author":"Ali", "content":"son"}]
 			render json: @post
 		else
 			head(:unauthorized)

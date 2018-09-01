@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Post from './components/Post';
 import logo from './logo.svg';
 import './App.css';
+import './postCard.css';
 
 class App extends Component {
 	constructor(props){

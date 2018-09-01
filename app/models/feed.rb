@@ -1,12 +1,11 @@
 class Feed < ApplicationRecord
 	
 	attr_accessor :current_user
-=begin
+
 	def initialize(user)
-		binding.pry
 		@current_user = user
 	end
-=end
+
 	def initTwitterApi
 		client = Twitter::REST::Client.new do |config|
   		config.consumer_key = ENV['CONSUMER_KEY']
@@ -20,7 +19,7 @@ class Feed < ApplicationRecord
 	def get_followed_account(username)
 		client = self.initTwitterApi
 		followed_account_info = client.user(username)
-		platform = Platform.find_or_create_by(name:"Twitter",api_base_url:"https://api.twitter.com/1.1/", user_id: current_user.id)
+		platform = Platform.find_or_create_by(name:"Twitter",api_base_url:"https://api.twitter.com/1.1/", user_id: @current_user.id)
 		new_followed_account = FollowedAccount.find_or_create_by(
 			account_id: followed_account_info.id,
 			account_name: username,
@@ -29,6 +28,7 @@ class Feed < ApplicationRecord
 		platform.followed_accounts << new_followed_account
 		platform.save
 		get_tweets(client, new_followed_account)
+		"complete"
 	end
 	
 	def get_tweets(client, followed_account)

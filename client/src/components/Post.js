@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Masonry from 'react-masonry-component';
 
 export default class Post extends Component {
 	constructor(props){
@@ -9,7 +10,7 @@ export default class Post extends Component {
 	render(){
 		{if(this.props.posts && this.props.posts.length){
 			return(
-				<div className="postContainer">
+				<Masonry className="postContainer">
 					{this.props.posts.map((post, idx) => {
 						return(
 							<div className="card post" key={idx}>
@@ -27,7 +28,7 @@ export default class Post extends Component {
 								</div>
 						)
 					})}
-					</div>
+				</Masonry>
 				)
 		 }
 		 else {
