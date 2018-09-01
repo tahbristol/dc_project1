@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Post from './components/Post';
 import Signup from './components/Signup';
 import NavBar from './components/Navbar';
+import Header from './components/Header';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -42,6 +43,7 @@ class App extends Component {
 						render={(props) => <Post posts={this.state.posts} />} />
 					<Route exact path="/signup" render={Signup} />
 					<Route exact path="/navbar" render={NavBar} />
+					<Route exact path="/header" render={Header} />
 				</div>
 			</Router>
     );
