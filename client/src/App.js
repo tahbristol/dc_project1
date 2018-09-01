@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Post from './components/Post';
+import Signup from './components/Signup';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
+import './signup.css';
 
 class App extends Component {
 	constructor(props){
@@ -32,9 +35,13 @@ class App extends Component {
 	
   render() {
     return (
-      <div className="App">
-        <Post posts={this.state.posts}/>
-      </div>
+      <Router>
+				<div>
+					<Route exact path="/posts" 
+						render={(props) => <Post posts={this.state.posts} />} />
+					<Route exact path="/signup" render={Signup} />
+				</div>
+			</Router>
     );
   }
 }
