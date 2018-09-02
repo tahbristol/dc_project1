@@ -6,6 +6,7 @@ import NavBar from './components/Navbar';
 import Header from './components/Header';
 import RegisterSection from './components/RegisterSection';
 import Features from './components/Features';
+import ActionCall from './components/ActionCall';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -48,6 +49,7 @@ class App extends Component {
 					<Route exact path="/header" render={Header} />
 					<Route exact path="/register_section" render={RegisterSection} />
 					<Route exact path="/features" render={Features} />
+					<Route exact path="/action_call" render={ActionCall} />
 				</div>
 			</Router>
     );
