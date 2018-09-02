@@ -17,7 +17,7 @@ const NavBar = ({}) => {
             </li>
 						
 						<li className="nav-item">
-							<a class="nav-link js-scroll-trigger" href="">Sign out</a>
+							<a className="nav-link js-scroll-trigger" href="">Sign out</a>
             </li>
 						
             <li className="nav-item">

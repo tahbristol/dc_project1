@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Signup from './Signup';
 
-const RegisterSection = ({}) => {
+const RegisterSection = ({props}) => {
 	return(
 		<section className="download bg-primary text-center" id="download">
       <div className="container">

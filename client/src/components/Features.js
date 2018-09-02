@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Post from './Post';
 
-const Features = ({}) => {
+const Features = ({posts}) => {
 	return(
 		<section className="features" id="features">
 		 <div className="container">
@@ -12,6 +13,7 @@ const Features = ({}) => {
 			 <div className="row">
 				 <div className="col-lg-5 my-auto cardConParent">
 					<div id="cardCon">
+						<Post posts={posts} />
 					</div>
 					<div className="button">
 						You can hook the "home button" to some JavaScript events or just remove it

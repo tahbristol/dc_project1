@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cardExample from '../images/cardClassroomTweetRaised.png';
 
 const Header = ({}) => {
 	
@@ -15,15 +16,12 @@ const Header = ({}) => {
 				 </div>
 				 <div className="col-lg-5 my-auto">
 					 <div className="device-container">
-						 <img id="cardExample" src=""></img>
+						 <img id="cardExample" src={cardExample}></img>
 						 <div className="device-mockup iphone6_plus portrait white">
 							 <div className="device">
 								 <div className="screen">
-									 Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! 
-									 <img src="images/demo-screen-1.jpg" className="img-fluid" alt=""></img>
 								 </div>
 								 <div className="button">
-									 You can hook the "home button" to some JavaScript events or just remove it 
 								 </div>
 							 </div>
 						 </div>

@@ -7,6 +7,8 @@ import Header from './components/Header';
 import RegisterSection from './components/RegisterSection';
 import Features from './components/Features';
 import ActionCall from './components/ActionCall';
+import Social from './components/Social';
+import Footer from './components/Footer';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -42,14 +44,13 @@ class App extends Component {
     return (
       <Router>
 				<div>
-					<Route exact path="/posts" 
-						render={(props) => <Post posts={this.state.posts} />} />
-					<Route exact path="/signup" render={Signup} />
-					<Route exact path="/navbar" render={NavBar} />
-					<Route exact path="/header" render={Header} />
-					<Route exact path="/register_section" render={RegisterSection} />
-					<Route exact path="/features" render={Features} />
-					<Route exact path="/action_call" render={ActionCall} />
+					<Route exact path="/signup" render={NavBar} />
+					<Route exact path="/signup" render={Header} />
+					<Route exact path="/signup" render={RegisterSection} />
+					<Route exact path="/signup" render={(props) => <Features posts={this.state.posts} />} />
+					<Route exact path="/signup" render={ActionCall} />
+					<Route exact path="/signup" render={Social} />
+					<Route exact path="/signup" render={Footer} />
 				</div>
 			</Router>
     );

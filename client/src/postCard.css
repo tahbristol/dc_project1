@@ -65,3 +65,9 @@ div#postIcons {
 i:hover {
 	color: #31ea15;
 }
+
+#cardExample {
+	width: 400px;
+	height: 400px;
+	margin-top: 20px;
+}
