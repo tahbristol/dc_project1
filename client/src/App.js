@@ -9,6 +9,7 @@ import Features from './components/Features';
 import ActionCall from './components/ActionCall';
 import Social from './components/Social';
 import Footer from './components/Footer';
+import UserPage from './components/UserPage';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -19,23 +20,27 @@ class App extends Component {
 		super(props)
 		
 		this.state = {
-			posts: []
+			posts: [],
+			user: {}
 		}
 	}
 	
 	componentDidMount(){
 		fetch('http://localhost:3001/v1/posts', 
 			{
+				
 				method: 'GET',
 				headers: {
 					'X-User-Email': 'tahbristol@gmail.com',
 					'X-User-Token': 'Utgb-N7qYyxEDU2Dq25k'
 				}
 			})
-		.then(data => data.json())
+		.then(data => {
+			data.json()
+		})
 		.then(jsonData => {
 			this.setState({
-				posts: jsonData
+				posts: jsonData,
 			})
 		})
 	}
@@ -51,6 +56,7 @@ class App extends Component {
 					<Route exact path="/signup" render={ActionCall} />
 					<Route exact path="/signup" render={Social} />
 					<Route exact path="/signup" render={Footer} />
+					<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
 				</div>
 			</Router>
     );

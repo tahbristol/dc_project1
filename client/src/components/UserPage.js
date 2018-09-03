@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import NavBar from './Navbar';
 import Post from './Post';
 
-const UserPage = ({}) => {
-	return(
-		<div className="userPageContainer">
-		<NavBar />
-		<Post posts={this.props.posts} />
-		</div>
-	)
-}
+const UserPage = ({props}) => {
+		return(
+			<div className="userPageContainer">
+			<NavBar />
+			
+			</div>
+		)
+	}
 
 export default UserPage;

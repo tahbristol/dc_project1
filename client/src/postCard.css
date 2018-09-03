@@ -71,3 +71,11 @@ i:hover {
 	height: 400px;
 	margin-top: 20px;
 }
+
+#mainNav {
+	background-color: coral;
+}
+
+.userPageContainer {
+	margin-top: 150px;
+}

@@ -9,7 +9,7 @@ const Post = ({posts}) => {
 					<div className="card post" key={idx}>
 						<i className="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
 						<div className="card-body">
-							<h5 className="card-title">{post.author}</h5>
+							<h5 className="card-title">@{post.author}</h5>
 							<p className="card-text">{post.content}</p>
 						</div>
 						<div id="postIcons">
