@@ -33,6 +33,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'pry'
 	gem 'foreman', '~> 0.82.0'
+	gem 'rspec'
 end
 
 group :development do
