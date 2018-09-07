@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-const Signup = () => {
-	
+const Signup = ({showLogin}) => {
+		
 	return(
 		<Form className="registerForm">
 			<FormGroup>
@@ -15,8 +15,8 @@ const Signup = () => {
 				<Input type="password" name="suPassword" id="suPassword" placeholder="" autoComplete="nope"/>
 			</FormGroup>
 			 
-			<FormGroup>
-				<Label for="suPasswordConfirmation">Password</Label>
+			<FormGroup className={showLogin === true ? "hide" : "show"}>
+				<Label for="suPasswordConfirmation">Confirm Password</Label>
 				<Input type="password" name="suPasswordConfirmation" id="suPasswordConfirmation" placeholder="" autoComplete="nope"/>
 			</FormGroup>
 			

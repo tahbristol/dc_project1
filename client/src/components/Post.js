@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 
 const Post = ({posts}) => {
+	
 	return(
 		<Masonry className="postContainer">
-			{posts.map((post, idx) => {
+			{posts && posts.map((post, idx) => {
 				return(
 					<div className="card post" key={idx}>
 						<i className="fa fa-twitter-square fa-3x" aria-hidden="true"></i>

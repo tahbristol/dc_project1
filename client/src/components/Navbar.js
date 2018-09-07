@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 
-class NavBar extends Component {
-	constructor(props){
-		super(props)
-		
-	}
-	
-	handleLogin = (e) => {
-		e.preventDefault();
-		
-	}
-	
-	render(){
+const NavBar = ({showLogin, handleLogin}) => {
+
 		return(
 			<nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	      <div className="container">
@@ -23,11 +13,11 @@ class NavBar extends Component {
 	        <div className="collapse navbar-collapse" id="navbarResponsive">
 	          <ul className="navbar-nav ml-auto">
 	            <li className="nav-item">
-	              <a onClick={this.handleLogin} className="nav-link js-scroll-trigger" href="/users/sign_in">Login</a>
+	              <a onClick={handleLogin} className="nav-link js-scroll-trigger" href="/users/sign_in">Login</a>
 	            </li>
 							
 							<li className="nav-item">
-								<a className="nav-link js-scroll-trigger" href="">Sign out</a>
+								<a className={"hide"} href="">Sign out</a>
 	            </li>
 							
 	            <li className="nav-item">
@@ -42,7 +32,5 @@ class NavBar extends Component {
 	    </nav>
 		)
 	}
-	
-}
 
 export default NavBar;

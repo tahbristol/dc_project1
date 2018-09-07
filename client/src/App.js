@@ -21,7 +21,7 @@ class App extends Component {
 		
 		this.state = {
 			posts: [],
-			user: {}
+			showLogin: false
 		}
 	}
 	
@@ -35,9 +35,7 @@ class App extends Component {
 					'X-User-Token': 'Utgb-N7qYyxEDU2Dq25k'
 				}
 			})
-		.then(data => {
-			data.json()
-		})
+		.then(data => data.json())
 		.then(jsonData => {
 			this.setState({
 				posts: jsonData,
@@ -45,13 +43,20 @@ class App extends Component {
 		})
 	}
 	
+	handleLogin = (e) => {
+		e.preventDefault();
+		this.setState({
+			showLogin: true
+		})
+	}
+	
   render() {
     return (
       <Router>
 				<div>
-					<Route exact path="/signup" render={NavBar} />
+					<Route exact path="/signup" component={(props) => <NavBar handleLogin={this.handleLogin} showLogin={this.state.showLogin} />} />
 					<Route exact path="/signup" render={Header} />
-					<Route exact path="/signup" render={RegisterSection} />
+					<Route exact path="/signup" render={(props) => <RegisterSection login={this.state.showLogin} />} />
 					<Route exact path="/signup" render={(props) => <Features posts={this.state.posts} />} />
 					<Route exact path="/signup" render={ActionCall} />
 					<Route exact path="/signup" render={Social} />
