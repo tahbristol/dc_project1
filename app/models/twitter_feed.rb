@@ -1,6 +1,6 @@
 class TwitterFeed < ApplicationRecord
 	
-	attr_accessor :current_user, :client, :followed_account
+	attr_accessor :current_user, :client, :followed_account, :tweets
 
 	def initialize(user)
 		@current_user = user
@@ -29,8 +29,11 @@ class TwitterFeed < ApplicationRecord
 	end
 	
 	def get_tweets
-		tweets = @client.user_timeline(@followed_account.account_id)
-		tweets.each do |tweet|
+		@tweets = @client.user_timeline(@followed_account.account_id)
+	end
+	
+	def save_tweets_as_posts
+		@tweets.each do |tweet|
 			Post.find_or_create_by(
 				content: tweet.text,
 				timestamp: tweet.created_at,
