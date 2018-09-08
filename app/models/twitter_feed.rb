@@ -1,4 +1,4 @@
-class Feed < ApplicationRecord
+class TwitterFeed < ApplicationRecord
 	
 	attr_accessor :current_user
 

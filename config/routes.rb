@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 	
 	namespace :v1 do
 		resources :posts
-		resources :feed
+		resources :twitter_feed
 		resource :sessions, only: [:create, :destroy]
-		get '/start_feed_lookup', to: 'feed#start_feed_lookup'
+		get '/start_feed_lookup', to: 'twitter_feed#start_feed_lookup'
 	end
 	
 	
