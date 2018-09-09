@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import profileImage from '../images/TylerNIH.jpg';
+import profileImage from '../images/avatar1.png';
 
 const UserMenu = () => {
 	return(
-		<div className="myCard userMenu">
+		<div className="card userMenu">
 			<div className="card-body">
 				<div className="profileHeading">
 					<h5 className="card-title">User Email</h5>
