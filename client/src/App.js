@@ -14,6 +14,9 @@ import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
 import './signup.css';
+import './userPage.css';
+import './navContainer.css';
+import './spacing.css';
 
 class App extends Component {
 	constructor(props){
@@ -52,17 +55,17 @@ class App extends Component {
 	
   render() {
     return (
-      <Router>
-				<div>
-					<Route exact path="/signup" component={(props) => <NavBar handleLogin={this.handleLogin} showLogin={this.state.showLogin} />} />
-					<Route exact path="/signup" render={Header} />
-					<Route exact path="/signup" render={(props) => <RegisterSection login={this.state.showLogin} />} />
-					<Route exact path="/signup" render={(props) => <Features posts={this.state.posts} />} />
-					<Route exact path="/signup" render={ActionCall} />
-					<Route exact path="/signup" render={Social} />
-					<Route exact path="/signup" render={Footer} />
-					<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
-				</div>
+				<Router>
+					<div>
+						<NavBar handleLogin={this.handleLogin} showLogin={this.state.showLogin} />
+						<Route exact path="/" render={Header} />
+						<Route exact path="/" render={(props) => <RegisterSection login={this.state.showLogin} />} />
+						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
+						<Route exact path="/" render={ActionCall} />
+						<Route exact path="/" render={Social} />
+						<Route exact path="/" render={Footer} />
+						<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
+					</div>
 			</Router>
     );
   }
