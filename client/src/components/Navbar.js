@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
-const NavBar = ({showLogin, handleLogin}) => {
-
+class NavBar extends Component {
+	constructor(props){
+		super(props)
+	}
+	
+	render(){
 		return(
 			<nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	      <div className="container">
@@ -13,11 +17,11 @@ const NavBar = ({showLogin, handleLogin}) => {
 	        <div className="collapse navbar-collapse" id="navbarResponsive">
 	          <ul className="navbar-nav ml-auto">
 	            <li className="nav-item">
-	              <a onClick={handleLogin} className="nav-link js-scroll-trigger" href="/users/sign_in">Login</a>
+	              <a className="nav-link js-scroll-trigger" href="">Login</a>
 	            </li>
 							
 							<li className="nav-item">
-								<a className={"hide"} href="">Sign out</a>
+								<a className="nav-link js-scroll-trigger" href=""></a>
 	            </li>
 							
 	            <li className="nav-item">
@@ -31,6 +35,7 @@ const NavBar = ({showLogin, handleLogin}) => {
 	      </div>
 	    </nav>
 		)
-	}
+	}		
+}
 
 export default NavBar;

@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-const Signup = ({showLogin}) => {
+class Signup extends Component {
+	constructor(props){
+		super(props)
 		
-	return(
-		<Form className="registerForm">
-			<FormGroup>
-		 		<Label for="suEmail">Email</Label>
-		 		<Input type="email" name="suEmail" id="suEmail" placeholder="" autoComplete="nope"/>
-			</FormGroup>
-			 
-			<FormGroup>
-			 	<Label for="suPassword">Password</Label>
-				<Input type="password" name="suPassword" id="suPassword" placeholder="" autoComplete="nope"/>
-			</FormGroup>
-			 
-			<FormGroup className={showLogin === true ? "hide" : "show"}>
-				<Label for="suPasswordConfirmation">Confirm Password</Label>
-				<Input type="password" name="suPasswordConfirmation" id="suPasswordConfirmation" placeholder="" autoComplete="nope"/>
-			</FormGroup>
-			
-		 	<Button>Submit</Button>
-		</Form>
-	)
+	}
+	
+	componentDidMount(){
+		this.displayClass = this.props.signedUp === true ? "hide" : "show";
+	}
+	
+	render(){
+		return(
+			<Form className="registerForm" onSubmit={this.props.handleSignup}>
+				<FormGroup>
+					<Label for="Email">Email</Label>
+					<Input type="email" name="email" id="email" placeholder="" autoComplete="nope"/>
+				</FormGroup>
+				 
+				<FormGroup>
+					<Label for="Password">Password</Label>
+					<Input type="password" name="password" id="password" placeholder="" autoComplete="nope"/>
+				</FormGroup>
+				 
+				<FormGroup className={this.displayClass}>
+					<Label for="PasswordConfirmation">Confirm Password</Label>
+					<Input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="" autoComplete="nope"/>
+				</FormGroup>
+				
+				<Button>Submit</Button>
+			</Form>
+		)
+	}
+
 }
 			
 	

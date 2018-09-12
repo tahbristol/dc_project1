@@ -24,7 +24,8 @@ class App extends Component {
 		
 		this.state = {
 			posts: [],
-			showLogin: false
+			user: {},
+			signedUp: false
 		}
 	}
 	
@@ -34,8 +35,8 @@ class App extends Component {
 				
 				method: 'GET',
 				headers: {
-					'X-User-Email': 'tahbristol@gmail.com',
-					'X-User-Token': 'Utgb-N7qYyxEDU2Dq25k'
+					'X-User-Email': this.state.user.email || 'tahbristol@gmail.com',
+					'X-User-Token': this.state.user.authentication_token || 'Utgb-N7qYyxEDU2Dq25k'
 				}
 			})
 		.then(data => data.json())
@@ -44,12 +45,42 @@ class App extends Component {
 				posts: jsonData,
 			})
 		})
+		
+		if(this.state.user.authentication_token){
+			this.setState({
+				signedUp: true
+			})
+		}
+		else {
+			this.setState({
+				signedUp: false
+			})
+		}
 	}
-	
-	handleLogin = (e) => {
+		
+	handleSignup = (e) => {
 		e.preventDefault();
-		this.setState({
-			showLogin: true
+		const form = e.target;
+		let data = {
+			user: {
+				email: form.email.value,
+				password: form.password.value,
+				password_confirmation: form.passwordConfirmation.value
+			}
+		}
+		
+		fetch('http://localhost:3001/v1/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json; charset-utf-8'
+			},
+			body: JSON.stringify(data)
+		})
+		.then(response => response.json())
+		.then(data => {
+			this.setState({
+				user: data
+			})
 		})
 	}
 	
@@ -57,9 +88,9 @@ class App extends Component {
     return (
 				<Router>
 					<div>
-						<NavBar handleLogin={this.handleLogin} showLogin={this.state.showLogin} />
+						<NavBar signedUp={this.state.signedUp} />
 						<Route exact path="/" render={Header} />
-						<Route exact path="/" render={(props) => <RegisterSection login={this.state.showLogin} />} />
+						<Route exact path="/" component={(props) => <RegisterSection handleSignup={this.handleSignup} />} />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
 						<Route exact path="/" render={Social} />
