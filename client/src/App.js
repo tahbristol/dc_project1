@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Post from './components/Post';
 import Signup from './components/Signup';
+import Login from './components/Login';
 import NavBar from './components/Navbar';
 import Header from './components/Header';
 import RegisterSection from './components/RegisterSection';
@@ -95,6 +96,7 @@ class App extends Component {
 						<Route exact path="/" render={ActionCall} />
 						<Route exact path="/" render={Social} />
 						<Route exact path="/" render={Footer} />
+						<Route exact path="/login" component={Login} />
 						<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
 					</div>
 			</Router>

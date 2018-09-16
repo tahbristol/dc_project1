@@ -17,7 +17,7 @@ class NavBar extends Component {
 	        <div className="collapse navbar-collapse" id="navbarResponsive">
 	          <ul className="navbar-nav ml-auto">
 	            <li className="nav-item">
-	              <a className="nav-link js-scroll-trigger" href="">Login</a>
+	              <a className="nav-link js-scroll-trigger" href="/login">Login</a>
 	            </li>
 							
 							<li className="nav-item">
