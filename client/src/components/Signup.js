@@ -7,10 +7,6 @@ class Signup extends Component {
 		
 	}
 	
-	componentDidMount(){
-		this.displayClass = this.props.signedUp === true ? "hide" : "show";
-	}
-	
 	render(){
 		return(
 			<Form className="registerForm" onSubmit={this.props.handleSignup}>
@@ -24,7 +20,7 @@ class Signup extends Component {
 					<Input type="password" name="password" id="password" placeholder="" autoComplete="nope"/>
 				</FormGroup>
 				 
-				<FormGroup className={this.displayClass}>
+				<FormGroup>
 					<Label for="PasswordConfirmation">Confirm Password</Label>
 					<Input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="" autoComplete="nope"/>
 				</FormGroup>

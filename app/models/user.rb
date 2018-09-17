@@ -8,4 +8,15 @@ class User < ApplicationRecord
 	
 	has_many :platforms
 	has_many :followed_accounts, through: :platforms
+	
+	def posts_from_followed_accounts
+		posts = []
+		self.followed_accounts.each do |account|
+			account.posts.each do |post|
+				posts << post
+			end
+		end
+		posts
+	end 
+	
 end

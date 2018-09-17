@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Post from './components/Post';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -31,32 +31,32 @@ class App extends Component {
 	}
 	
 	componentDidMount(){
+		this.getPosts();
+	}
+	
+	getPosts(){
+		debugger
 		fetch('http://localhost:3001/v1/posts', 
 			{
-				
 				method: 'GET',
 				headers: {
-					'X-User-Email': this.state.user.email || 'tahbristol@gmail.com',
-					'X-User-Token': this.state.user.authentication_token || 'Utgb-N7qYyxEDU2Dq25k'
+					'X-User-Email': this.state.user.email,
+					'X-User-Token': this.state.user.authentication_token
 				}
 			})
-		.then(data => data.json())
-		.then(jsonData => {
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			return Error(response.statusText);
+			})
+		.then(posts => {
 			this.setState({
-				posts: jsonData,
+				posts: posts || [],
 			})
 		})
-		
-		if(this.state.user.authentication_token){
-			this.setState({
-				signedUp: true
-			})
-		}
-		else {
-			this.setState({
-				signedUp: false
-			})
-		}
+		.catch(error => {
+			console.log(error);
+		})
 	}
 		
 	handleSignup = (e) => {
@@ -77,12 +77,59 @@ class App extends Component {
 			},
 			body: JSON.stringify(data)
 		})
-		.then(response => response.json())
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			throw Error(response.statusText);
+		})
 		.then(data => {
 			this.setState({
 				user: data
 			})
+			this.getPosts();
+			window.location = '/userpage'; //need to implement react router redirect here.
+			//next steps:
+			// 1. Get posts for user who is located in the this.state
 		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+	
+	handleLogin = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		let data = {
+				email: form.email.value,
+				password: form.password.value
+		}
+		
+		fetch('http://localhost:3001/v1/sessions', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json; charset-utf-8'
+			},
+			body: JSON.stringify(data)
+		})
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			throw Error(response.statusText);
+		})
+		.then(data => {
+			this.setState({
+				user: data
+			})
+			debugger
+			this.getPosts();
+			window.location = '/userpage'; //need to implement react router redirect here. State leaves otherwise
+			//next steps:
+			// 1. Get posts for user who is located in the this.state
+		})
+		.catch(error => {
+			console.log(error);
+		})
+		
 	}
 	
   render() {
@@ -96,7 +143,7 @@ class App extends Component {
 						<Route exact path="/" render={ActionCall} />
 						<Route exact path="/" render={Social} />
 						<Route exact path="/" render={Footer} />
-						<Route exact path="/login" component={Login} />
+						<Route exact path="/login" component={(props) => <Login handleLogin={this.handleLogin} /> } />
 						<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
 					</div>
 			</Router>

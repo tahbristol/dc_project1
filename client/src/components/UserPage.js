@@ -8,7 +8,7 @@ const UserPage = ({posts}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
-					<div class="marTop200"></div>
+					<div className="marTop200"></div>
 				</Row>
 				<Row>
 					<Col md="3">

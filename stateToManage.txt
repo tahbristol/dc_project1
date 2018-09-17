@@ -1,0 +1,6 @@
+*total posts
+posts filter
+*total followed accounts
+followed accounts filter
+*current_user
+*Platform filter

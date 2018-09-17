@@ -4,7 +4,7 @@ class V1::UsersController < ApplicationController
 		if @user.save
 			render json: @user.as_json(only: [:email, :authentication_token, :hasFollowedAccounts]), status: :created
 		else
-			render json: {"Error": "User was not created"}
+			head(:not_implemented)
 		end
 	end
 	
