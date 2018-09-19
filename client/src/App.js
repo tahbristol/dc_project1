@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom';
 import Post from './components/Post';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -26,7 +26,7 @@ class App extends Component {
 		this.state = {
 			posts: [],
 			user: {},
-			signedUp: false
+			authenticated: false
 		}
 	}
 	
@@ -35,7 +35,6 @@ class App extends Component {
 	}
 	
 	getPosts(){
-		debugger
 		fetch('http://localhost:3001/v1/posts', 
 			{
 				method: 'GET',
@@ -62,6 +61,7 @@ class App extends Component {
 	handleSignup = (e) => {
 		e.preventDefault();
 		const form = e.target;
+		
 		let data = {
 			user: {
 				email: form.email.value,
@@ -87,9 +87,6 @@ class App extends Component {
 				user: data
 			})
 			this.getPosts();
-			window.location = '/userpage'; //need to implement react router redirect here.
-			//next steps:
-			// 1. Get posts for user who is located in the this.state
 		})
 		.catch(error => {
 			console.log(error);
@@ -99,7 +96,8 @@ class App extends Component {
 	handleLogin = (e) => {
 		e.preventDefault();
 		const form = e.target;
-		let data = {
+		
+		let user = {
 				email: form.email.value,
 				password: form.password.value
 		}
@@ -109,7 +107,7 @@ class App extends Component {
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8'
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify(user)
 		})
 		.then(response => {
 			if(response.ok)
@@ -118,33 +116,51 @@ class App extends Component {
 		})
 		.then(data => {
 			this.setState({
-				user: data
+				user: data,
+				authenticated: true
 			})
-			debugger
 			this.getPosts();
-			window.location = '/userpage'; //need to implement react router redirect here. State leaves otherwise
-			//next steps:
-			// 1. Get posts for user who is located in the this.state
 		})
 		.catch(error => {
 			console.log(error);
 		})
-		
+	
+	}
+	
+	signOut = () => {
+		this.setState({
+			user: {},
+			authenticated: false,
+			posts: []
+		})
 	}
 	
   render() {
     return (
 				<Router>
 					<div>
-						<NavBar signedUp={this.state.signedUp} />
+						<NavBar signedUp={this.state.signedUp} signOut={this.signOut} isAuthenticated={this.state.authenticated} />
 						<Route exact path="/" render={Header} />
 						<Route exact path="/" component={(props) => <RegisterSection handleSignup={this.handleSignup} />} />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
 						<Route exact path="/" render={Social} />
 						<Route exact path="/" render={Footer} />
-						<Route exact path="/login" component={(props) => <Login handleLogin={this.handleLogin} /> } />
-						<Route exact path="/userpage" render={(props) => <UserPage posts={this.state.posts} />} />
+						<Route exact path="/login" component={(props) => (
+								this.state.authenticated
+								? <Redirect to={"/userpage"} />
+								: <Login handleLogin={this.handleLogin} />
+							) } />
+						<Route exact path="/userpage" render={(props) => (
+								this.state.authenticated
+								? <UserPage posts={this.state.posts} />
+								: <Redirect to={"/login"} />
+							) } />
+						<Route exact path="/signout" render={() => (
+								!this.state.authenticated
+								? <Redirect to={"/"} />
+								: <UserPage posts={this.state.posts} />
+							) } />
 					</div>
 			</Router>
     );

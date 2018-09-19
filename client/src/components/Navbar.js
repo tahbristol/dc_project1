@@ -16,11 +16,15 @@ class NavBar extends Component {
 	        </button>
 	        <div className="collapse navbar-collapse" id="navbarResponsive">
 	          <ul className="navbar-nav ml-auto">
-	            <li className="nav-item">
+	            <li className={this.props.isAuthenticated ? "hide" : "show" + " nav-item"}>
 	              <a className="nav-link js-scroll-trigger" href="/login">Login</a>
 	            </li>
 							
-							<li className="nav-item">
+							<li className={this.props.isAuthenticated ? "show" : "hide" + " nav-item"}>
+	              <a className="nav-link js-scroll-trigger" href="/signout">Sign Out</a>
+	            </li>
+							
+							<li className="nav-item" onClick={this.props.signOut}>
 								<a className="nav-link js-scroll-trigger" href=""></a>
 	            </li>
 							
