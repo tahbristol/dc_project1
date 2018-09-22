@@ -23,6 +23,15 @@ namespace :ready_api do
 	end
 end
 
+namespace :servers do
+	desc 'Start the two servers'
+	task :development do
+		exec 'foreman start -f Procfile.dev'
+	end
+end
+
+
 task start: 'start:development'
 task ready_api: 'ready_api:development'
+task servers: 'servers:development'
 Rails.application.load_tasks
