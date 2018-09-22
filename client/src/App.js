@@ -180,13 +180,13 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu}/>
+								? <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-								: <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} />
+							: <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
 						<Route exact path="/platform" component={Platform} />
 					</div>

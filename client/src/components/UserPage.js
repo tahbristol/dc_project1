@@ -5,7 +5,7 @@ import Post from './Post';
 import UserMenu from './UserMenu';
 import Platform from './Platform';
 
-const UserPage = ({posts, toggleUserMenu}) => {
+const UserPage = ({posts, toggleUserMenu, userMenu}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
@@ -15,14 +15,14 @@ const UserPage = ({posts, toggleUserMenu}) => {
 					<Col md="3">
 						<UserMenu toggleUserMenu={toggleUserMenu}/>
 					</Col>
-					<Col md="9">
+					<Col md="9" className={userMenu.showPosts ? "show" : "hide"}>
 						<Post posts={posts} />
 					</Col>
-					<Col>
-					
+					<Col md="9" className={userMenu.showPlatforms ? "show" : "hide"}>
+						<Platform />
 					</Col>
-					<Col>
-					
+					<Col md="9" className={userMenu.showFollowedAccounts ? "show" : "hide"}>
+					<h1>Followed Accounts</h1>
 					</Col>
 				</Row>
 			</Container>
