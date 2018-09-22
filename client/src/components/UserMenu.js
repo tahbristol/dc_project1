@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import profileImage from '../images/avatar1.png';
 
-const UserMenu = () => {
+const UserMenu = ({toggleUserMenu}) => {
 	return(
 		<div className="card userMenu">
 			<div className="card-body">
@@ -10,19 +10,15 @@ const UserMenu = () => {
 					<img id="profileImage" src={profileImage} alt="profile picture"></img>
 				</div>
 				
-				<div className="menuTabs">
+				<div className="menuTabs" id="Platforms" onClick={toggleUserMenu}>
 					Tracked Platforms
 				</div>
 				
-				<div className="menuTabs">
+				<div className="menuTabs" id="Accounts" onClick={toggleUserMenu}>
 					Tracked Accounts
 				</div>
 				
-				<div className="menuTabs">
-					Add Tracked Accounts
-				</div>
-				
-				<div className="menuTabs">
+				<div className="menuTabs" id="Posts" onClick={toggleUserMenu}>
 					Posts
 				</div>
 				

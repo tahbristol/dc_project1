@@ -6,7 +6,7 @@ class Platform extends Component {
 			<div className="card platform">
 				<div className="card-body">
 					<div className="platformInfo icon">
-						<i class="fa fa-twitter-square fa-4x"></i>
+						<i className="fa fa-twitter-square fa-4x"></i>
 					</div>
 					<div className="platformInfo">
 						<p className="platformCounts">123</p>

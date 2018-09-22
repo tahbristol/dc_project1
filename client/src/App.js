@@ -28,7 +28,12 @@ class App extends Component {
 		this.state = {
 			posts: [],
 			user: {},
-			authenticated: false
+			authenticated: false,
+			userMenu: {
+				showPlatforms: false,
+				showFollowedAccounts: false,
+				showPosts: false,
+			}
 		}
 	}
 	
@@ -36,6 +41,13 @@ class App extends Component {
 		this.getPosts();
 	}
 	
+	stateKeys = () => {
+		return Object.keys(this.state);
+	}
+	
+	userMenuKeys = () => {
+		return Object.keys(this.state.userMenu);
+	}
 	getPosts(){
 		fetch('http://localhost:3001/v1/posts', 
 			{
@@ -137,6 +149,19 @@ class App extends Component {
 		})
 	}
 	
+	toggleUserMenu = (e) => {
+		let itemToShow = e.target.id;
+		let userMenu = {};
+		this.userMenuKeys().map((key, idx) => {
+			if(key.includes(itemToShow))
+				userMenu[key] =  true
+			else
+				userMenu[key] = false
+				
+			this.setState({userMenu: userMenu})
+		})
+	}
+	
   render() {
     return (
 				<Router>
@@ -155,13 +180,13 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} />
+								? <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu}/>
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-								: <UserPage posts={this.state.posts} />
+								: <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} />
 							) } />
 						<Route exact path="/platform" component={Platform} />
 					</div>
