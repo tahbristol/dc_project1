@@ -11,6 +11,7 @@ import ActionCall from './components/ActionCall';
 import Social from './components/Social';
 import Footer from './components/Footer';
 import UserPage from './components/UserPage';
+import Platform from './components/Platform';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -18,6 +19,7 @@ import './signup.css';
 import './userPage.css';
 import './navContainer.css';
 import './spacing.css';
+import './platform.css';
 
 class App extends Component {
 	constructor(props){
@@ -161,6 +163,7 @@ class App extends Component {
 								? <Redirect to={"/"} />
 								: <UserPage posts={this.state.posts} />
 							) } />
+						<Route exact path="/platform" component={Platform} />
 					</div>
 			</Router>
     );
