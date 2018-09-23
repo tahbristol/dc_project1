@@ -1,0 +1,16 @@
+HTML/CSS 
+	Responsiveness
+
+
+Rails API 
+	-wire up add Account Form
+		-add account route
+	-wire up mark as read on post card
+	-adjust posts route to return only those
+		where marked_as_read is false
+
+
+React 
+	-FollowedAccount component
+	-fxn for mark as read on post card
+	
