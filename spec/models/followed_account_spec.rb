@@ -4,7 +4,7 @@ RSpec.describe FollowedAccount, type: :model do
   
 	describe "FollowedAccount" do
 		before :each do 
-			@user = User.create(email: "emal@test.com", password: "password")
+			@user = User.create(email: "email@test.com", password: "password")
 			@platform_1 = Platform.create(name: "Twitter", api_base_url: "https://www.twitter.com/api/v1", user_id: @user.id)
 		end
 		

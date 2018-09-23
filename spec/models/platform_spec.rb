@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Platform, type: :model do
 	describe "Platform" do
 		before :each do 
-			@user = User.create(email: "emal@test.com", password: "password")
+			@user = User.create(email: "email@test.com", password: "password")
 			@platform_1 = Platform.create(name: "Twitter", api_base_url: "https://www.twitter.com/api/v1", user_id: @user.id)
 		end
 		
