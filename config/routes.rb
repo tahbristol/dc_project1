@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:new, :create]
 		resource :sessions, only: [:create, :destroy]
 		get '/start_feed_lookup', to: 'twitter_feed#start_feed_lookup'
+		get '/user_platform_info', to: 'users#user_platform_info'
 	end
 	
 

@@ -11,15 +11,19 @@ const UserMenu = ({toggleUserMenu}) => {
 				</div>
 				
 				<div className="menuTabs" id="Platforms" onClick={toggleUserMenu}>
-					Tracked Platforms
+					Platforms
 				</div>
 				
 				<div className="menuTabs" id="Accounts" onClick={toggleUserMenu}>
-					Tracked Accounts
+					Following
 				</div>
 				
 				<div className="menuTabs" id="Posts" onClick={toggleUserMenu}>
 					Posts
+				</div>
+				
+				<div className="menuTabs" id="addAccount" onClick={toggleUserMenu}>
+					Add Account
 				</div>
 				
 			</div>

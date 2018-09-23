@@ -12,6 +12,7 @@ import Social from './components/Social';
 import Footer from './components/Footer';
 import UserPage from './components/UserPage';
 import Platform from './components/Platform';
+import AddAccount from './components/AddAccount';
 import logo from './logo.svg';
 import './App.css';
 import './postCard.css';
@@ -20,6 +21,7 @@ import './userPage.css';
 import './navContainer.css';
 import './spacing.css';
 import './platform.css';
+import './addAccount.css';
 
 class App extends Component {
 	constructor(props){
@@ -32,8 +34,10 @@ class App extends Component {
 			userMenu: {
 				showPlatforms: false,
 				showFollowedAccounts: false,
-				showPosts: false,
-			}
+				showPosts: true,
+				addAccount: false
+			},
+			userPlatformInfo: {}
 		}
 	}
 	
@@ -48,6 +52,7 @@ class App extends Component {
 	userMenuKeys = () => {
 		return Object.keys(this.state.userMenu);
 	}
+	
 	getPosts(){
 		fetch('http://localhost:3001/v1/posts', 
 			{
@@ -55,7 +60,7 @@ class App extends Component {
 				headers: {
 					'X-User-Email': this.state.user.email,
 					'X-User-Token': this.state.user.authentication_token
-				}
+					}
 			})
 		.then(response => {
 			if(response.ok)
@@ -65,6 +70,28 @@ class App extends Component {
 		.then(posts => {
 			this.setState({
 				posts: posts || [],
+			})
+		})
+		.catch(error => {
+			console.log(error);
+		})
+		
+		fetch('http://localhost:3001/v1/user_platform_info',
+			{
+				method: 'GET',
+				headers: {
+					'X-User-Email': this.state.user.email,
+					'X-User-Token': this.state.user.authentication_token
+					}
+			})
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			return Error(response.statusText);
+		})
+		.then(userPlatformInfo => {
+			this.setState({
+				userPlatformInfo: userPlatformInfo
 			})
 		})
 		.catch(error => {
@@ -151,9 +178,10 @@ class App extends Component {
 	
 	toggleUserMenu = (e) => {
 		let itemToShow = e.target.id;
+		debugger
 		let userMenu = {};
 		this.userMenuKeys().map((key, idx) => {
-			if(key.includes(itemToShow))
+			if(key.includes(itemToShow) || key === itemToShow)
 				userMenu[key] =  true
 			else
 				userMenu[key] = false
@@ -180,15 +208,15 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage posts={this.state.posts} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage posts={this.state.posts} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+							: <UserPage posts={this.state.posts} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
-						<Route exact path="/platform" component={Platform} />
+						<Route exact path="/addAccount" render={AddAccount} />
 					</div>
 			</Router>
     );
