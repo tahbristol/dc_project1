@@ -25,7 +25,7 @@ class Signup extends Component {
 					<Input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="" autoComplete="nope"/>
 				</FormGroup>
 				
-				<Button>Submit</Button>
+				<Button color="primary">Submit</Button>
 			</Form>
 		)
 	}
