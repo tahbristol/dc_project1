@@ -1,7 +1,19 @@
 HTML/CSS 
 	Responsiveness
 		-media queries for user page
-
+	Main Page
+		-fix content
+		-adjust layout/color scheme
+	User page
+		-color scheme
+		-responsiveness for tiles on scroll
+	Login page 
+		-background color
+		-make a modal instead
+		-add "reset password" to form
+	Contact Form 
+	
+		
 
 Rails API 
 	-wire up add Account Form
@@ -20,4 +32,12 @@ React
 	-FollowedAccount component
 	-fxn for mark as read on post card
 	-automate platform icon for cards
+	-tests with cucumber
+	NavBar 
+		-links don't work on login page 
+	-ContactForm component 
+	-redux
+	-redirect to user page after successful signup
+		
+	
 	
