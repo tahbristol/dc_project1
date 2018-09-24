@@ -1,5 +1,5 @@
-HTML/CSS 
-	Responsiveness
+HTML/CSS #Sara will do this.
+	Responsiveness 
 		-media queries for user page
 	Main Page
 		-fix content

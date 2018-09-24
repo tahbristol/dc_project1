@@ -1,0 +1,18 @@
+.registerForm, .loginForm {
+	width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+}
+
+.loginContainer {
+	text-align: center;
+	margin-top: 200px;
+}
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
