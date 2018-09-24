@@ -14,14 +14,14 @@ import UserPage from './components/UserPage';
 import Platform from './components/Platform';
 import AddAccount from './components/AddAccount';
 import logo from './logo.svg';
-import './App.css';
-import './postCard.css';
-import './signup.css';
-import './userPage.css';
-import './navContainer.css';
-import './spacing.css';
-import './platform.css';
-import './addAccount.css';
+import './css/App.css';
+import './css/postCard.css';
+import './css/signup.css';
+import './css/userPage.css';
+import './css/navContainer.css';
+import './css/spacing.css';
+import './css/platform.css';
+import './css/addAccount.css';
 
 class App extends Component {
 	constructor(props){

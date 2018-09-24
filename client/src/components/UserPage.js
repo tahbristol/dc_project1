@@ -10,22 +10,24 @@ const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount
 		return(
 			<Container fluid className="userPage">
 				<Row>
-					<div className="marTop200"></div>
+					<Col lg="12">
+						<div className="marTop200"></div>
+					</Col>
 				</Row>
 				<Row>
-					<Col md="3">
+					<Col lg="3">
 						<UserMenu toggleUserMenu={toggleUserMenu}/>
 					</Col>
-					<Col md="9" className={userMenu.showPosts ? "show" : "hide"}>
+					<Col lg="9" className={userMenu.showPosts ? "show" : "hide"}>
 						<Post posts={posts} />
 					</Col>
-					<Col md="9" className={userMenu.showPlatforms ? "show" : "hide"}>
+					<Col lg="9" className={userMenu.showPlatforms ? "show" : "hide"}>
 						<Platform userPlatformInfo={userPlatformInfo}/>
 					</Col>
-					<Col md="9" className={userMenu.showFollowedAccounts ? "show" : "hide"}>
+					<Col lg="9" className={userMenu.showFollowedAccounts ? "show" : "hide"}>
 					<h1>Followed Accounts</h1>
 					</Col>
-					<Col md="9" className={userMenu.addAccount ? "show" : "hide"}>
+					<Col lg="9" className={userMenu.addAccount ? "show" : "hide"}>
 						<AddAccount addAccount={addAccount}/>
 					</Col>
 				</Row>
