@@ -196,11 +196,11 @@ class App extends Component {
 	addAccount = (e) => {
 		e.preventDefault();
 		let form = e.target;
-		
+		let accountName = form.accountName.value;
 		let account= {
 			followed_account: {
 				platform: form.platform.value,
-				account_name: form.accountName.value
+				account_name: accountName.split('@')[1] || accountName
 			}
 		}
 		

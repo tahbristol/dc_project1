@@ -16,7 +16,7 @@ class User < ApplicationRecord
 				posts << post
 			end
 		end
-		posts
+		posts.sort_by {|key| key[:timestamp]}
 	end 
 	
 end
