@@ -6,7 +6,7 @@ import UserMenu from './UserMenu';
 import Platform from './Platform';
 import AddAccount from './AddAccount';
 
-const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo}) => {
+const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
@@ -26,7 +26,7 @@ const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo}) => {
 					<h1>Followed Accounts</h1>
 					</Col>
 					<Col md="9" className={userMenu.addAccount ? "show" : "hide"}>
-						<AddAccount />
+						<AddAccount addAccount={addAccount}/>
 					</Col>
 				</Row>
 			</Container>

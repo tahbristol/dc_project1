@@ -146,7 +146,9 @@ class App extends Component {
 		fetch('http://localhost:3001/v1/sessions', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json; charset-utf-8'
+				'Content-Type': 'application/json; charset-utf-8',
+				'X-User-Email': this.state.user.email,
+				'X-User-Token': this.state.user.authentication_token
 			},
 			body: JSON.stringify(user)
 		})
@@ -165,7 +167,6 @@ class App extends Component {
 		.catch(error => {
 			console.log(error);
 		})
-	
 	}
 	
 	signOut = () => {
@@ -178,8 +179,8 @@ class App extends Component {
 	
 	toggleUserMenu = (e) => {
 		let itemToShow = e.target.id;
-		debugger
 		let userMenu = {};
+		
 		this.userMenuKeys().map((key, idx) => {
 			if(key.includes(itemToShow) || key === itemToShow)
 				userMenu[key] =  true
@@ -188,6 +189,40 @@ class App extends Component {
 				
 			this.setState({userMenu: userMenu})
 		})
+	}
+	
+	addAccount = (e) => {
+		e.preventDefault();
+		let form = e.target;
+		
+		let account= {
+			followed_account: {
+				platform: form.platform.value,
+				account_name: form.accountName.value
+			}
+		}
+		
+		fetch('http://localhost:3001/v1/start_feed_lookup', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json; charset-utf-8',
+				'X-User-Email': this.state.user.email,
+				'X-User-Token': this.state.user.authentication_token
+			},
+			body: JSON.stringify(account)
+		})
+		.then(response => {
+			if(response.ok){
+				this.getPosts();
+				
+				return response.json();
+			}
+			throw Error(response.statusText);
+		})
+		.catch(error => {
+			console.log(error);
+		})
+		form.accountName.value = '';
 	}
 	
   render() {
@@ -208,15 +243,14 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage posts={this.state.posts} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+							: <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
-						<Route exact path="/addAccount" render={AddAccount} />
 					</div>
 			</Router>
     );

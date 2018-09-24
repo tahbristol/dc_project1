@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-const AddAccount = () => {
+const AddAccount = ({addAccount}) => {
 	return(
 		<div className="addAccountContainer card">
 			<h3>Add Account</h3>
-			<Form>
-				
-				
+			<Form onSubmit={addAccount}>
 				<FormGroup>
-					<Label for="account_name">Account Name</Label>
-					<Input type="text" name="account_name" id="account_name" />
+					<Label for="accountName">Account Name</Label>
+					<Input type="text" name="accountName" id="account_name" />
 				</FormGroup>
 				
 				<FormGroup>

@@ -16,21 +16,22 @@ HTML/CSS
 		
 
 Rails API 
-	-wire up add Account Form
-		-add account route
-		-create new platform or find existing
-		-create followed account and attach to Platform
-		-attach to user 
-		-return success or failure
-		-show alert message
-	-wire up mark as read on post card
-	-adjust posts route to return only those
+	-wire up add Account Form #DONE
+		-add account route #DONE
+		-create new platform or find existing #DONE
+		-create followed account and attach to Platform #DONE
+		-attach to user #DONE
+		-return success or failure 
+		-show alert message 
+	-wire up mark as read on post card #Julio will do.
+	-adjust posts route to return only those #Tyler will do.
 		where marked_as_read is false
+	-sort posts by timestamp before route return
 
 
 React 
 	-FollowedAccount component
-	-fxn for mark as read on post card
+	-fxn for mark as read on post card  #Julio will do.
 	-automate platform icon for cards
 	-tests with cucumber
 	NavBar 
