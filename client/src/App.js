@@ -54,49 +54,51 @@ class App extends Component {
 	}
 	
 	getPosts(){
-		fetch('http://localhost:3001/v1/posts', 
-			{
-				method: 'GET',
-				headers: {
-					'X-User-Email': this.state.user.email,
-					'X-User-Token': this.state.user.authentication_token
-					}
+		if(this.state.authenticated){
+			fetch('http://localhost:3001/v1/posts', 
+				{
+					method: 'GET',
+					headers: {
+						'X-User-Email': this.state.user.email,
+						'X-User-Token': this.state.user.authentication_token
+						}
+				})
+			.then(response => {
+				if(response.ok)
+					return response.json();
+				return Error(response.statusText);
+				})
+			.then(posts => {
+				this.setState({
+					posts: posts || [],
+				})
 			})
-		.then(response => {
-			if(response.ok)
-				return response.json();
-			return Error(response.statusText);
+			.catch(error => {
+				console.log(error);
 			})
-		.then(posts => {
-			this.setState({
-				posts: posts || [],
+			
+			fetch('http://localhost:3001/v1/user_platform_info',
+				{
+					method: 'GET',
+					headers: {
+						'X-User-Email': this.state.user.email,
+						'X-User-Token': this.state.user.authentication_token
+						}
+				})
+			.then(response => {
+				if(response.ok)
+					return response.json();
+				return Error(response.statusText);
 			})
-		})
-		.catch(error => {
-			console.log(error);
-		})
-		
-		fetch('http://localhost:3001/v1/user_platform_info',
-			{
-				method: 'GET',
-				headers: {
-					'X-User-Email': this.state.user.email,
-					'X-User-Token': this.state.user.authentication_token
-					}
+			.then(userPlatformInfo => {
+				this.setState({
+					userPlatformInfo: userPlatformInfo
+				})
 			})
-		.then(response => {
-			if(response.ok)
-				return response.json();
-			return Error(response.statusText);
-		})
-		.then(userPlatformInfo => {
-			this.setState({
-				userPlatformInfo: userPlatformInfo
+			.catch(error => {
+				console.log(error);
 			})
-		})
-		.catch(error => {
-			console.log(error);
-		})
+		}
 	}
 		
 	handleSignup = (e) => {
