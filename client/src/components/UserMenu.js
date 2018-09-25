@@ -7,7 +7,7 @@ const UserMenu = ({toggleUserMenu}) => {
 			<div className="card-body">
 				<div className="profileHeading">
 					<h5 className="card-title">User Email</h5>
-					<img id="profileImage" src={profileImage} alt="profile picture"></img>
+					<img id="profileImage" src={profileImage} alt="profile"></img>
 				</div>
 				
 				<div className="menuTabs" id="Platforms" onClick={toggleUserMenu}>

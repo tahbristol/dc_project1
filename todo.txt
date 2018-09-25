@@ -35,7 +35,8 @@ React
 	-automate platform icon for cards
 	-tests with cucumber
 	NavBar 
-		-links don't work on login page 
+		- Contact link doesn't work on login page  
+		- remove features link when logged in #DONE
 	-ContactForm component 
 	-redux
 	-redirect to user page after successful signup #DONE
