@@ -129,7 +129,8 @@ class App extends Component {
 		})
 		.then(data => {
 			this.setState({
-				user: data
+				user: data,
+				authenticated: true
 			})
 			this.getPosts();
 		})
@@ -235,7 +236,11 @@ class App extends Component {
 					<div>
 						<NavBar signedUp={this.state.signedUp} signOut={this.signOut} isAuthenticated={this.state.authenticated} />
 						<Route exact path="/" render={Header} />
-						<Route exact path="/" component={(props) => <RegisterSection handleSignup={this.handleSignup} />} />
+						<Route exact path="/" component={(props) => (
+								this.state.authenticated
+								? <Redirect to={"/userpage"} />
+								: <RegisterSection handleSignup={this.handleSignup} />
+							) } />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
 						<Route exact path="/" render={Social} />

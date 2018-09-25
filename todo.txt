@@ -30,7 +30,7 @@ Rails API
 
 
 React 
-	-FollowedAccount component
+	-FollowedAccount component #DONE
 	-fxn for mark as read on post card  #Julio will do.
 	-automate platform icon for cards
 	-tests with cucumber
@@ -38,7 +38,7 @@ React
 		-links don't work on login page 
 	-ContactForm component 
 	-redux
-	-redirect to user page after successful signup
+	-redirect to user page after successful signup #DONE
 		
 	
 	
