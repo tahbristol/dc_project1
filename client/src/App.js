@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import UserPage from './components/UserPage';
 import Platform from './components/Platform';
 import AddAccount from './components/AddAccount';
+import FollowedAccount from './components/FollowedAccount';
 import logo from './logo.svg';
 import './css/App.css';
 import './css/postCard.css';
@@ -22,6 +23,7 @@ import './css/navContainer.css';
 import './css/spacing.css';
 import './css/platform.css';
 import './css/addAccount.css';
+import './css/followedAccount.css';
 
 class App extends Component {
 	constructor(props){
@@ -253,6 +255,7 @@ class App extends Component {
 								? <Redirect to={"/"} />
 							: <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
+						<Route exact path="/followed_account" render={FollowedAccount} />
 					</div>
 			</Router>
     );

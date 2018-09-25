@@ -5,6 +5,7 @@ import Post from './Post';
 import UserMenu from './UserMenu';
 import Platform from './Platform';
 import AddAccount from './AddAccount';
+import FollowedAccount from './FollowedAccount';
 
 const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount}) => {
 		return(
@@ -25,7 +26,7 @@ const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount
 						<Platform userPlatformInfo={userPlatformInfo}/>
 					</Col>
 					<Col lg="9" className={userMenu.showFollowedAccounts ? "show" : "hide"}>
-					<h1>Followed Accounts</h1>
+					<FollowedAccount />
 					</Col>
 					<Col lg="9" className={userMenu.addAccount ? "show" : "hide"}>
 						<AddAccount addAccount={addAccount}/>
