@@ -9,11 +9,13 @@ class User < ApplicationRecord
 	has_many :platforms
 	has_many :followed_accounts, through: :platforms
 	
-	def posts_from_followed_accounts
+	def unread_posts
 		posts = []
 		self.followed_accounts.each do |account|
 			account.posts.each do |post|
-				posts << post
+				if !post.marked_as_read
+					posts << post
+				end
 			end
 		end
 		posts.sort_by {|key| key[:timestamp]}

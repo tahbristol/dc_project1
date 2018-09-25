@@ -12,7 +12,7 @@ class V1::UsersController < ApplicationController
 		@user = current_user
 		@platforms = @user.platforms
 		@followed_accounts_size = @user.followed_accounts.size
-		@all_posts = @user.posts_from_followed_accounts.size
+		@all_posts = @user.unread_posts.size
 		render json: {platforms: @platforms, numFollowedAccounts: @followed_accounts_size, numPosts: @all_posts}
 	end
 	

@@ -23,15 +23,16 @@ RSpec.describe User, type: :model do
       end
     end
 		
-		describe "#posts_from_followed_accounts" do
-			it "returns total posts" do
+		describe "#unread_posts" do
+			it "returns all posts not marked as read" do
 				user = User.create(email: "email@test.com", password: "password")
 				platform_1 = Platform.create(name: "Twitter", api_base_url: "https://www.twitter.com/api/v1", user_id: user.id)
 				followed_account_1 = FollowedAccount.create(account_name: "tahbristol", account_id: 1234, platform_id: platform_1.id)
 				post_1 = Post.create(author: "tahbristol", content: "This is a post", timestamp: "05/24/2015", social_media_platform: "Twitter", marked_as_read: false, followed_account_id: followed_account_1.id)
 				post_2 = Post.create(author: "tahbristol", content: "This is a second post", timestamp: "05/24/2015", social_media_platform: "Twitter", marked_as_read: false, followed_account_id: followed_account_1.id)
+				post_3 = Post.create(author: "tahbristol", content: "This is a third post", timestamp: "05/24/2015", social_media_platform: "Twitter", marked_as_read: true, followed_account_id: followed_account_1.id)
 				
-				expect(user.posts_from_followed_accounts.size).to eq(2)
+				expect(user.unread_posts.size).to eq(2)
 			end
 		end
 		

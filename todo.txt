@@ -24,8 +24,8 @@ Rails API
 		-return success or failure 
 		-show alert message 
 	-wire up mark as read on post card #Julio will do.
-	-adjust posts route to return only those #Tyler will do.
-		where marked_as_read is false
+	-adjust posts route to return only those 
+		where marked_as_read is false #DONE
 	-sort posts by timestamp before route return #DONE
 
 
