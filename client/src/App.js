@@ -39,7 +39,8 @@ class App extends Component {
 				showPosts: true,
 				addAccount: false
 			},
-			userPlatformInfo: {}
+			userPlatformInfo: {},
+			followedAccountsInfo: {}
 		}
 	}
 	
@@ -95,6 +96,28 @@ class App extends Component {
 			.then(userPlatformInfo => {
 				this.setState({
 					userPlatformInfo: userPlatformInfo
+				})
+			})
+			.catch(error => {
+				console.log(error);
+			})
+			
+			fetch('http://localhost:3001/v1/followed_accounts_info',
+				{
+					method: 'GET',
+					headers: {
+						'X-User-Email': this.state.user.email,
+						'X-User-Token': this.state.user.authentication_token
+					}
+				})
+			.then(response => {
+				if(response.ok)
+					return response.json();
+				return Error(response.statusText);
+			})
+			.then(followedAccountsInfo => {
+				this.setState({
+					followedAccountsInfo: followedAccountsInfo
 				})
 			})
 			.catch(error => {
