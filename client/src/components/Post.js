@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 
-const Post = ({posts}) => {	
+const Post = ({posts, markAsRead}) => {	
 	{if(posts.length){
 	 	return(
 			<Masonry className="postContainer">
@@ -16,7 +16,7 @@ const Post = ({posts}) => {
 							<div id="postIcons">
 								<ul>
 									{/*<li><i className="fa fa-retweet fa-2x" aria-hidden="true"></i><br /><small>retweet</small></li>*/}		
-									<li><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li>
+									<li onClick={markAsRead}><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li>
 								</ul>
 							</div>
 						</div>

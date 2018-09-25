@@ -227,7 +227,12 @@ class App extends Component {
 			console.log(error);
 		})
 		form.accountName.value = '';
-	}
+  }
+  
+  postsOnClick = () => {
+    // debugger
+    console.log("post clicked")
+  }
 	
   render() {
     return (
@@ -247,7 +252,7 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} postsOnClick={this.postsOnClick} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
