@@ -7,7 +7,7 @@ import Platform from './Platform';
 import AddAccount from './AddAccount';
 import FollowedAccount from './FollowedAccount';
 
-const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount}) => {
+const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount, followedAccountsInfo}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
@@ -26,7 +26,7 @@ const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount
 						<Platform userPlatformInfo={userPlatformInfo}/>
 					</Col>
 					<Col lg="9" className={userMenu.showFollowedAccounts ? "show" : "hide"}>
-					<FollowedAccount />
+					<FollowedAccount accountInfo={followedAccountsInfo}/>
 					</Col>
 					<Col lg="9" className={userMenu.addAccount ? "show" : "hide"}>
 						<AddAccount addAccount={addAccount}/>

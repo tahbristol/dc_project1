@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 		resource :sessions, only: [:create, :destroy]
 		post '/start_feed_lookup', to: 'twitter_feed#start_feed_lookup'
 		get '/user_platform_info', to: 'users#user_platform_info'
+		get '/followed_accounts_info', to: 'users#user_followed_accounts'
 	end
 	
 

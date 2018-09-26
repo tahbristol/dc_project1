@@ -39,8 +39,8 @@ class App extends Component {
 				showPosts: true,
 				addAccount: false
 			},
-			userPlatformInfo: {},
-			followedAccountsInfo: {}
+			userPlatformInfo: [],
+			followedAccountsInfo: []
 		}
 	}
 	
@@ -275,15 +275,14 @@ class App extends Component {
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage posts={this.state.posts} addAccount={this.addAccount} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+							: <UserPage posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
-						<Route exact path="/followed_account" render={FollowedAccount} />
 					</div>
 			</Router>
     );

@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 
 const Post = ({posts}) => {	
-	{if(posts.length){
 	 	return(
 			<Masonry className="postContainer">
-				{posts && posts.map((post, idx) => {
+				{posts.map((post, idx) => {
 					return(
 						<div className="card post" key={idx}>
 							<i className="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
@@ -20,18 +19,9 @@ const Post = ({posts}) => {
 								</ul>
 							</div>
 						</div>
-					)
-				})}
+					)})}
 			</Masonry>
 		)	
-	}
-	else {
-		return(
-			<Masonry className="postContainer">
-				<div></div>
-			</Masonry>
-		)
-	}}
 }
 
 export default Post;

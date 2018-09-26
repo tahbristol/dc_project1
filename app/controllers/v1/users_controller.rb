@@ -16,7 +16,19 @@ class V1::UsersController < ApplicationController
 		render json: {platforms: @platforms, numFollowedAccounts: @followed_accounts_size, numPosts: @all_posts}
 	end
 	
-	
+	def user_followed_accounts
+		@user = current_user
+		@followed_accounts = @user.followed_accounts
+		@followed_accounts_info = @followed_accounts.collect do |fa|
+			if fa.account_name.present?
+				{
+					accountName: fa.account_name,
+			 		numPosts: fa.posts.size
+				}
+		 end
+		end
+		render json: @followed_accounts_info.compact
+	end
 	
 	private
 	

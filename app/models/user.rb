@@ -18,7 +18,7 @@ class User < ApplicationRecord
 				end
 			end
 		end
-		posts.sort_by {|key| key[:timestamp]}
+		posts.sort_by {|key| key[:timestamp]}.reverse!
 	end 
 	
 end

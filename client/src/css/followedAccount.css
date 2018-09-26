@@ -3,6 +3,8 @@
 	min-height: 0px;
 	height: 100px;
 	margin-top: 200px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .followedAccount .card-body {
@@ -15,6 +17,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	
 }
 
 .postCounts, .accountName {
