@@ -58,7 +58,7 @@ class App extends Component {
 	
 	getPosts(){
 		if(this.state.authenticated){
-			fetch('http://localhost:3001/v1/posts', 
+			fetch('/v1/posts', 
 				{
 					method: 'GET',
 					headers: {
@@ -80,7 +80,7 @@ class App extends Component {
 				console.log(error);
 			})
 			
-			fetch('http://localhost:3001/v1/user_platform_info',
+			fetch('/v1/user_platform_info',
 				{
 					method: 'GET',
 					headers: {
@@ -102,7 +102,7 @@ class App extends Component {
 				console.log(error);
 			})
 			
-			fetch('http://localhost:3001/v1/followed_accounts_info',
+			fetch('/v1/followed_accounts_info',
 				{
 					method: 'GET',
 					headers: {
@@ -138,7 +138,7 @@ class App extends Component {
 			}
 		}
 		
-		fetch('http://localhost:3001/v1/users', {
+		fetch('/v1/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8'
@@ -171,7 +171,7 @@ class App extends Component {
 				password: form.password.value
 		}
 		
-		fetch('http://localhost:3001/v1/sessions', {
+		fetch('/v1/sessions', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8',
@@ -230,7 +230,7 @@ class App extends Component {
 			}
 		}
 		
-		fetch('http://localhost:3001/v1/start_feed_lookup', {
+		fetch('/start_feed_lookup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8',

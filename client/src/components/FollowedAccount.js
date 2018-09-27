@@ -6,7 +6,7 @@ const FollowedAccount = ({accountInfo}) => {
 		<div>
 			{accountInfo.map((account, idx) => {
 				return(
-					<div className="card followedAccount">
+					<div className="card followedAccount" key={idx}>
 						<div className="card-body">
 							
 							<div className="accountInfo">
