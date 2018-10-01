@@ -32,10 +32,9 @@ Rails API
 React 
 	-FollowedAccount component #DONE
 	-fxn for mark as read on post card  #Julio will do.
-	-automate platform icon for cards
 	-tests with cucumber
 	NavBar 
-		- Contact link doesn't work on login page  
+		- Contact link doesn't work on login page  #Julio will do
 		- remove features link when logged in #DONE
 	-ContactForm component 
 	-redux

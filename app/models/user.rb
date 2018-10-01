@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	
 	def unread_posts
 		posts = []
-		self.followed_accounts.each do |account|
+		self.followed_accounts.each do |account|  #make this better via active record
 			account.posts.each do |post|
 				if !post.marked_as_read
 					posts << post
@@ -22,3 +22,15 @@ class User < ApplicationRecord
 	end 
 	
 end
+
+=begin
+	#need in active record 
+	select *
+	from posts p 
+	inner join followed_accounts fa 
+		on fa.id = p.followed_account_id 
+	inner join platforms pl 
+	 on pl.id = fa.platform_id
+	inner join users u 
+		on u.id = pl.user_id
+=end
