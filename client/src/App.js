@@ -230,7 +230,7 @@ class App extends Component {
 			}
 		}
 		
-		fetch('/start_feed_lookup', {
+		fetch('v1/start_feed_lookup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8',
