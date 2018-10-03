@@ -14,6 +14,11 @@ namespace :start do
 			exec 'foreman start -f Procfile.dev'
 		end
 	end
+	
+	desc 'Start production server'
+	  task :production do
+	    exec 'NPM_CONFIG_PRODUCTION=true npm run postinstall && foreman start'
+	  end  
 end
 
 namespace :ready_api do
@@ -29,6 +34,7 @@ namespace :servers do
 		exec 'foreman start -f Procfile.dev'
 	end
 end
+
 
 
 task start: 'start:development'
