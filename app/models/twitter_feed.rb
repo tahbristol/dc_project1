@@ -20,7 +20,7 @@ class TwitterFeed < ApplicationRecord
 		followed_account_info = @client.user(twitterHandle)
 		platform = Platform.find_or_create_by(name:"Twitter",api_base_url:"https://api.twitter.com/1.1/", user_id: @current_user.id)
 		@followed_account = FollowedAccount.find_or_create_by(
-			account_id: followed_account_info.id,
+			account_id: followed_account_info.id.to_s,
 			account_name: twitterHandle,
 			platform_id: platform.id
 		)
@@ -29,7 +29,7 @@ class TwitterFeed < ApplicationRecord
 	end
 	
 	def get_tweets
-		@tweets = @client.user_timeline(@followed_account.account_id)
+		@tweets = @client.user_timeline(@followed_account.account_id.to_i)
 	end
 	
 	def save_tweets_as_posts

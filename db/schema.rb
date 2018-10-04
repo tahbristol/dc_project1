@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_180825) do
+ActiveRecord::Schema.define(version: 2018_10_04_010819) do
 
   create_table "followed_accounts", force: :cascade do |t|
-    t.integer "account_id"
+    t.string "account_id"
     t.string "account_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
