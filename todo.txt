@@ -27,6 +27,7 @@ Rails API
 	-adjust posts route to return only those 
 		where marked_as_read is false #DONE
 	-sort posts by timestamp before route return #DONE
+	-upload profile image
 
 
 React 
@@ -40,5 +41,6 @@ React
 	-redux
 	-redirect to user page after successful signup #DONE
 		
-	
+
+Deploy #DONE
 	
