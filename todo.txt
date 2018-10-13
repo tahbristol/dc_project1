@@ -21,7 +21,8 @@ Rails API
 		-create new platform or find existing #DONE
 		-create followed account and attach to Platform #DONE
 		-attach to user #DONE
-		-return success or failure 
+		-return success or failure us
+		
 		-show alert message 
 	-wire up mark as read on post card #Julio will do.
 	-adjust posts route to return only those 
