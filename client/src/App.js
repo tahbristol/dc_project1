@@ -102,7 +102,7 @@ class App extends Component {
 				console.log(error);
 			})
 			
-			fetch('/v1/followed_accounts_info',
+			fetch('/v1/user_followed_accounts_info',
 				{
 					method: 'GET',
 					headers: {

@@ -13,5 +13,24 @@ class User < ApplicationRecord
 		Post.joins(followed_account: {platform: :user}).where(users: {id: self.id}).unread.ordered_desc
 	end 
 	
+	def user_platform_info
+		platforms = self.platforms
+		followed_accounts_size = self.followed_accounts.size 
+		unread_posts = self.unread_posts.size 
+		{platforms: platforms, numFollowedAccounts: followed_accounts_size, numPosts: unread_posts}
+	end 
+	
+	def user_followed_accounts_info
+		followed_accounts = self.followed_accounts
+		followed_accounts_info = followed_accounts.collect do |fa|
+			if fa.account_name.present?
+				{
+					accountName: fa.account_name,
+			 		numPosts: fa.posts.size
+				}
+		 	end
+	 	end
+		 followed_accounts_info
+	end 
 end
 
