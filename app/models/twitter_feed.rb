@@ -24,7 +24,7 @@ class TwitterFeed < ApplicationRecord
 			account_name: twitterHandle,
 			platform_id: platform.id
 		)
-		platform.followed_accounts << @followed_account
+		platform.followed_accounts << @followed_account unless platform.followed_accounts.include?(@followed_account)
 		platform.save
 	end
 	
