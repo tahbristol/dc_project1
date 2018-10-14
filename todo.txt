@@ -12,6 +12,7 @@ HTML/CSS #Sara will do this.
 		-make a modal instead
 		-add "reset password" to form
 	Contact Form 
+	-"back to top" button on the page where posts are viewed
 	
 		
 
@@ -29,6 +30,7 @@ Rails API
 		where marked_as_read is false #DONE
 	-sort posts by timestamp before route return #DONE
 	-upload profile image
+	-Only keep the last 100 posts and delete from db on "marked as read"
 
 
 React 
@@ -41,6 +43,7 @@ React
 	-ContactForm component 
 	-redux
 	-redirect to user page after successful signup #DONE
+	-Posts should update on user login
 		
 
 Deploy #DONE
