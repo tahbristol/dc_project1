@@ -10,27 +10,8 @@ class User < ApplicationRecord
 	has_many :followed_accounts, through: :platforms
 	
 	def unread_posts
-		posts = []
-		self.followed_accounts.each do |account|  #make this better via active record
-			account.posts.each do |post|
-				if !post.marked_as_read
-					posts << post
-				end
-			end
-		end
-		posts.sort_by {|key| key[:timestamp]}.reverse!
+		Post.joins(followed_account: {platform: :user}).where(users: {id: self.id}).unread.ordered_desc
 	end 
 	
 end
 
-=begin
-	#need in active record 
-	select *
-	from posts p 
-	inner join followed_accounts fa 
-		on fa.id = p.followed_account_id 
-	inner join platforms pl 
-	 on pl.id = fa.platform_id
-	inner join users u 
-		on u.id = pl.user_id
-=end
