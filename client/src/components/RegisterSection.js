@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Signup from './Signup';
+import AuthStatusDisplay from './AuthStatusDisplay';
 
 class RegisterSection extends Component {
 	constructor(props){
@@ -10,7 +11,8 @@ class RegisterSection extends Component {
 	render(){
 		return(
 			<section className="download bg-primary text-center" id="download">
-	      <div className="container">
+	      <div className="">
+					<AuthStatusDisplay showAuthFail={this.props.showAuthFail} />
 	        <div className="row">
 	          <div className="col-md-8 mx-auto">
 	            <h2 className="section-heading">Sign Up</h2>

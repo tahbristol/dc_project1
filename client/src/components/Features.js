@@ -4,7 +4,7 @@ import Post from './Post';
 const Features = ({posts}) => {
 	return(
 		<section className="features" id="features">
-		 <div className="container">
+		 <div className="">
 			 <div className="section-heading text-center">
 				 <h2>Your One Stop Shop</h2>
 				 <p className="text-muted">Save space, save time and keep up to date, in one place.</p>

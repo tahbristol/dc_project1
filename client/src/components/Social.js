@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const Social = ({}) => {
 	return(
 		<section className="contact bg-primary" id="contact">
-		 <div className="container">
+		 <div className="">
 			 <h2>We
 				 <i className="fa fa-heart"></i>
 				 new friends!</h2>

@@ -6,13 +6,15 @@ import UserMenu from './UserMenu';
 import Platform from './Platform';
 import AddAccount from './AddAccount';
 import FollowedAccount from './FollowedAccount';
+import AuthStatusDisplay from './AuthStatusDisplay';
 
-const UserPage = ({posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount, followedAccountsInfo}) => {
+const UserPage = ({showAuthSuccess, posts, toggleUserMenu, userMenu, userPlatformInfo, addAccount, followedAccountsInfo}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
 					<Col lg="12">
 						<div className="marTop200"></div>
+						<AuthStatusDisplay showAuthSuccess={showAuthSuccess} />
 					</Col>
 				</Row>
 				<Row>

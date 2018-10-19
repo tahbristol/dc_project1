@@ -14,6 +14,7 @@ import UserPage from './components/UserPage';
 import Platform from './components/Platform';
 import AddAccount from './components/AddAccount';
 import FollowedAccount from './components/FollowedAccount';
+import AuthStatusDisplay from './components/AuthStatusDisplay';
 import logo from './logo.svg';
 import './css/App.css';
 import './css/postCard.css';
@@ -24,6 +25,8 @@ import './css/spacing.css';
 import './css/platform.css';
 import './css/addAccount.css';
 import './css/followedAccount.css';
+import './css/authMessage.css';
+import './css/actionCall.css';
 
 class App extends Component {
 	constructor(props){
@@ -40,7 +43,9 @@ class App extends Component {
 				addAccount: false
 			},
 			userPlatformInfo: [],
-			followedAccountsInfo: []
+			followedAccountsInfo: [],
+			showAuthFail: false,
+			showAuthSuccess: false
 		}
 	}
 	
@@ -153,12 +158,16 @@ class App extends Component {
 		.then(data => {
 			this.setState({
 				user: data,
-				authenticated: true
+				authenticated: true,
+				showAuthSuccess: true
 			})
+			setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
 			this.getPosts();
 		})
 		.catch(error => {
-			console.log(error);
+			this.setState({
+				showAuthFail: true
+			})
 		})
 	}
 	
@@ -188,13 +197,17 @@ class App extends Component {
 		.then(data => {
 			this.setState({
 				user: data,
-				authenticated: true
+				authenticated: true,
+				showAuthSuccess: true
 			})
 			this.getPosts();
 		})
 		.catch(error => {
-			console.log(error);
+			this.setState({
+				showAuthFail: true
+			})
 		})
+		setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
 	}
 	
 	signOut = () => {
@@ -262,7 +275,7 @@ class App extends Component {
 						<Route exact path="/" component={(props) => (
 								this.state.authenticated
 								? <Redirect to={"/userpage"} />
-								: <RegisterSection handleSignup={this.handleSignup} />
+								: <RegisterSection handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail}  />
 							) } />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
@@ -271,11 +284,11 @@ class App extends Component {
 						<Route exact path="/login" component={(props) => (
 								this.state.authenticated
 								? <Redirect to={"/userpage"} />
-								: <Login handleLogin={this.handleLogin} />
+								: <Login handleLogin={this.handleLogin} showAuthFail={this.state.showAuthFail} />
 							) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (

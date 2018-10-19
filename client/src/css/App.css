@@ -33,3 +33,11 @@
 	margin-right: auto;
 }
 
+body {
+  overflow-x:hidden;
+}
+
+.row {
+	margin-left: auto;
+	margin-right: auto;
+}
