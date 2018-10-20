@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  authentication_token   :string(30)
+#  hasFollowedAccounts    :boolean
+#
+
 class User < ApplicationRecord
 	acts_as_token_authenticatable
 	
@@ -7,6 +28,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 	
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+	before_create :generate_confirmation_token
 	
 	has_many :platforms
 	has_many :followed_accounts, through: :platforms
@@ -31,5 +53,13 @@ class User < ApplicationRecord
 	 	end
 		 followed_accounts_info
 	end 
+	
+	def generate_confirmation_token
+		self.confirmation_token = SecureRandom.hex
+	end 
+	
+	def confirmed?
+		self.confirmed_at.present?
+	end
 end
 

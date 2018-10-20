@@ -1,3 +1,10 @@
+# == Schema Information
+#
+# Table name: twitter_feeds
+#
+#  id :integer          not null, primary key
+#
+
 class TwitterFeed < ApplicationRecord
 	
 	attr_accessor :current_user, :client, :followed_account, :tweets

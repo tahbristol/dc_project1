@@ -22,9 +22,7 @@ Rails API
 		-create new platform or find existing #DONE
 		-create followed account and attach to Platform #DONE
 		-attach to user #DONE
-		-return success or failure us
-		
-		-show alert message 
+		-return success or failure us #DONE
 	-wire up mark as read on post card #Julio will do.
 	-adjust posts route to return only those 
 		where marked_as_read is false #DONE
@@ -35,6 +33,11 @@ Rails API
 	-link tweet to source
 	 	-gem install twitter-text
 	-add date/time to tweet
+	-add email confirmation #DONE
+	-implement password reset/account confirmation email
+	-handle n + 1
+	-add serializers
+	
 
 
 React 
@@ -45,9 +48,10 @@ React
 		- Contact link doesn't work on login page  #Julio will do
 		- remove features link when logged in #DONE
 	-ContactForm component 
-	-redux
+	-add redux or flux
 	-redirect to user page after successful signup #DONE
 	-Posts should update on user login
+	-show alert message on login/signup #DONE
 		
 
 Deploy #DONE
