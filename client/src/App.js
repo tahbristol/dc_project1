@@ -157,12 +157,8 @@ class App extends Component {
 		})
 		.then(data => {
 			this.setState({
-				user: data,
-				authenticated: true,
 				showAuthSuccess: true
 			})
-			setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
-			this.getPosts();
 		})
 		.catch(error => {
 			this.setState({
