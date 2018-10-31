@@ -4,6 +4,6 @@ class V1::ConfirmationsController < ApplicationController
 			@user = User.find_by(confirmation_token: params[:token])
 			@user.update_attributes(confirmed_at: DateTime.now) unless @user.confirmed?
 		end
-		redirect_to "http://localhost:3000/login"
+		redirect_to "http://localhost:3000/loginWith/#{params[:token]}"
 	end
 end
