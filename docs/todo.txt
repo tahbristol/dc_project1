@@ -13,6 +13,7 @@ HTML/CSS #Sara will do this.
 		-add "reset password" to form
 	Contact Form 
 	-"back to top" button on the page where posts are viewed
+  -Do README
 	
 		
 
@@ -29,7 +30,7 @@ Rails API
 	-sort posts by timestamp before route return #DONE
 	-upload profile image
 	-Only keep the last 100 posts and delete from db on "marked as read"
-	-move logic from controllers to models
+	-move logic from controllers to models #DONE
 	-link tweet to source
 	 	-gem install twitter-text
 	-add date/time to tweet
@@ -39,6 +40,9 @@ Rails API
 	-add serializers
 	-namespace auth
 	-add enum for 'marked_as_read' to posts
+  -enable email service(sendgrid) #DONE
+  -enable sendgrid in production
+  -
 	
 
 
