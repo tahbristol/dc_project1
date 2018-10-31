@@ -12,7 +12,7 @@
 
 class FollowedAccount < ApplicationRecord
 	validates :account_name, presence: true
-	validates :account_id, uniqueness: true
+	validates :account_id, presence: true
 	
 	has_many :posts
   belongs_to :platform
