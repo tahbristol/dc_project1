@@ -15,6 +15,7 @@ import Platform from './components/Platform';
 import AddAccount from './components/AddAccount';
 import FollowedAccount from './components/FollowedAccount';
 import AuthStatusDisplay from './components/AuthStatusDisplay';
+import TokenLogin from './components/TokenLogin';
 import logo from './logo.svg';
 import './css/App.css';
 import './css/postCard.css';
@@ -175,7 +176,6 @@ class App extends Component {
 				email: form.email.value,
 				password: form.password.value
 		}
-		
 		fetch('/v1/sessions', {
 			method: 'POST',
 			headers: {
@@ -261,6 +261,38 @@ class App extends Component {
 		})
 		form.accountName.value = '';
 	}
+  
+  loginWithToken = (e) => {
+		e.preventDefault();
+		fetch('/v1/sessions', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json; charset-utf-8',
+				'X-User-Email': '',
+				'X-User-Token': ''
+			},
+			body: JSON.stringify({token: e.target.token.value})
+		})
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			throw Error(response.statusText);
+		})
+		.then(data => {
+      this.setState({
+				user: data,
+				authenticated: true,
+				showAuthSuccess: true
+			})
+			this.getPosts();
+		})
+		.catch(error => {
+      this.setState({
+				showAuthFail: true
+			})
+		})
+    setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
+	}
 	
   render() {
     return (
@@ -282,6 +314,11 @@ class App extends Component {
 								? <Redirect to={"/userpage"} />
 								: <Login handleLogin={this.handleLogin} showAuthFail={this.state.showAuthFail} />
 							) } />
+            <Route exact path="/loginWith/:token" component={(props) =>(
+                this.state.authenticated
+                ? <Redirect to={"/userpage"} />
+                : <TokenLogin loginWithToken={this.loginWithToken} {...props} />
+              ) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
 								? <UserPage showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
