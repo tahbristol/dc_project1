@@ -1,0 +1,14 @@
+user signs up and then is directed to their main account page
+	-if they have FollowedAccounts then display the last 20 posts for them all.
+	-if they do not have FollowedAccounts then display a call to action to allow them to add a FollowedAccounts
+	notes: A call to /api/login or /api/signup will return a user json object.
+
+user logs in and is directed to their main account page
+	-same conditions above follow.
+	
+user clicks on a post card
+	-Modal pops up showing all information
+	-can mark as read which removes from shown posts
+	-can click link to go to source
+	-can reply directly
+

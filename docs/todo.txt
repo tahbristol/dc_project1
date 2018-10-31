@@ -1,0 +1,60 @@
+HTML/CSS #Sara will do this.
+	Responsiveness 
+		-media queries for user page
+	Main Page
+		-fix content
+		-adjust layout/color scheme
+	User page
+		-color scheme
+		-responsiveness for tiles on scroll
+	Login page 
+		-background color
+		-make a modal instead
+		-add "reset password" to form
+	Contact Form 
+	-"back to top" button on the page where posts are viewed
+	
+		
+
+Rails API 
+	-wire up add Account Form #DONE
+		-add account route #DONE
+		-create new platform or find existing #DONE
+		-create followed account and attach to Platform #DONE
+		-attach to user #DONE
+		-return success or failure us #DONE
+	-wire up mark as read on post card #Julio will do.
+	-adjust posts route to return only those 
+		where marked_as_read is false #DONE
+	-sort posts by timestamp before route return #DONE
+	-upload profile image
+	-Only keep the last 100 posts and delete from db on "marked as read"
+	-move logic from controllers to models
+	-link tweet to source
+	 	-gem install twitter-text
+	-add date/time to tweet
+	-add email confirmation #DONE
+	-implement password reset email
+	-handle n + 1
+	-add serializers
+	-namespace auth
+	-add enum for 'marked_as_read' to posts
+	
+
+
+React 
+	-FollowedAccount component #DONE
+	-fxn for mark as read on post card  #Julio will do.
+	-tests with cucumber
+	NavBar 
+		- Contact link doesn't work on login page  #Julio will do
+		- remove features link when logged in #DONE
+	-ContactForm component 
+	-add redux or flux
+	-redirect to user page after successful signup #DONE
+	-Posts should update on user login
+	-show alert message on login/signup #DONE
+		
+
+Deploy #DONE
+	
