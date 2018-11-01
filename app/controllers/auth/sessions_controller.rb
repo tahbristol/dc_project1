@@ -1,7 +1,6 @@
-class V1::SessionsController < ApplicationController
+class Auth::SessionsController < ApplicationController
 	
 	def create
-		start_session = false
 		if params[:token].present?
 			@user = User.find_by(confirmation_token: params[:token])
 			start_session = new_with_token
@@ -28,14 +27,14 @@ class V1::SessionsController < ApplicationController
 	
 	private
 		def new_with_token
-			if @user&.confirmed?
-				true
-			end
+		  @user&.confirmed? ? true : false
 		end
 		
 		def new_with_password
 			if @user.confirmed? && @user&.valid_password?(params[:password])
 				true
+      else
+        false
 			end
 		end
 	

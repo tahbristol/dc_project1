@@ -176,7 +176,7 @@ class App extends Component {
 				email: form.email.value,
 				password: form.password.value
 		}
-		fetch('/v1/sessions', {
+		fetch('/auth/sessions', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8',
@@ -264,7 +264,7 @@ class App extends Component {
   
   loginWithToken = (e) => {
 		e.preventDefault();
-		fetch('/v1/sessions', {
+		fetch('/auth/sessions', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset-utf-8',

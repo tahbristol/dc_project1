@@ -8,12 +8,13 @@ Rails.application.routes.draw do
 		resources :twitter_feed
 		resources :users, only: [:new, :create]
 		resources :followed_accounts, only: [:create, :destroy]
-		resource :sessions, only: [:create, :destroy]
 		post '/start_feed_lookup', to: 'twitter_feed#start_feed_lookup'
 		get '/user_platform_info', to: 'users#user_platform_info'
 		get '/user_followed_accounts_info', to: 'users#user_followed_accounts_info'
-		resource :confirmation, only: [:new]		
 	end
 
-	
+  namespace :auth do
+    resource :sessions, only: [:create, :destroy]
+    resource :confirmation, only: [:new]
+  end
 end

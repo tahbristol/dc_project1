@@ -1,4 +1,4 @@
-class V1::ConfirmationsController < ApplicationController
+class Auth::ConfirmationsController < ApplicationController
 	def new 
 		if params[:token].present?
 			@user = User.find_by(confirmation_token: params[:token])
