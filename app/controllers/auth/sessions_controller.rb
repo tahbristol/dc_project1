@@ -4,6 +4,7 @@ class Auth::SessionsController < ApplicationController
 		if params[:token].present?
 			@user = User.find_by(confirmation_token: params[:token])
 			start_session = new_with_token
+      @user.disable_confirmation_token unless @user&.confirmation_token.nil?
 		else
 			@user = User.find_by(email: params[:email])
 			start_session = new_with_password

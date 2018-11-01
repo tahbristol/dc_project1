@@ -38,10 +38,12 @@ Rails API
 	-implement password reset email
 	-handle n + 1
 	-add serializers
-	-namespace auth
+	-namespace auth #DONE
 	-add enum for 'marked_as_read' to posts
   -enable email service(sendgrid) #DONE
   -enable sendgrid in production
+  -figure out auto-login from email confirm
+  -disable confirmation_token after confirmed
   -
 	
 
@@ -57,7 +59,8 @@ React
 	-add redux or flux
 	-redirect to user page after successful signup #DONE
 	-Posts should update on user login
-	-show alert message on login/signup #DONE
+	-show alert message on login #DONE
+  -show alert message on successful signup(check your email)
 		
 
 Deploy #DONE

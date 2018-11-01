@@ -61,5 +61,10 @@ class User < ApplicationRecord
 	def confirmed?
 		self.confirmed_at.present?
 	end
+  
+  def disable_confirmation_token
+    self.confirmation_token = nil
+    self.save
+  end
 end
 
