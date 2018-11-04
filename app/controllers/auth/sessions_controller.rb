@@ -32,7 +32,7 @@ class Auth::SessionsController < ApplicationController
 		end
 		
 		def new_with_password
-			if @user.confirmed? && @user&.valid_password?(params[:password])
+			if @user&.confirmed? && @user&.valid_password?(params[:password])
 				true
       else
         false
