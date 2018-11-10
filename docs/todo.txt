@@ -44,7 +44,6 @@ Rails API
   -enable sendgrid in production
   -figure out auto-login from email confirm
   -disable confirmation_token after confirmed
-  -
 	
 
 
@@ -61,6 +60,7 @@ React
 	-Posts should update on user login
 	-show alert message on login #DONE
   -show alert message on successful signup(check your email)
+  -show alert on successful account add
 		
 
 Deploy #DONE
