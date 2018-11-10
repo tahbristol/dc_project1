@@ -90,6 +90,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.app_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "APP_PATH"]
-  config.api_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "API_PATH"]
+  config.app_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "_APP_PATH"]
+  config.api_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "_API_PATH"]
 end
