@@ -15,6 +15,6 @@ Rails.application.routes.draw do
 
   namespace :auth do
     resource :sessions, only: [:create, :destroy]
-    resource :confirmation, only: [:new]
+    resource :confirmation, only: [:create]
   end
 end

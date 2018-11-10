@@ -11,8 +11,10 @@
   <body>
     <h1>Welcome to Stalk Market</h1>
 		<p>Only one step away from getting started.</p>
-		<p>Please confirm your email address <a href="#">here</a></p>
-		<%= link_to "Click to Confirm", new_auth_confirmation_url(token: @user.confirmation_token) %>
+    <form action="<%= "#{Rails.configuration.api_path}auth/confirmation/" %>" method="post"><!-- should be api path --->
+      <input type="hidden" name="token" value="<%= @user.confirmation_token %>"></input>
+      <button type="submit">Confirm</button>
+    </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 	</body>

@@ -262,8 +262,7 @@ class App extends Component {
 		form.accountName.value = '';
 	}
   
-  loginWithToken = (e) => {
-		e.preventDefault();
+  loginWithToken = (token) => {
 		fetch('/auth/sessions', {
 			method: 'POST',
 			headers: {
@@ -271,7 +270,7 @@ class App extends Component {
 				'X-User-Email': '',
 				'X-User-Token': ''
 			},
-			body: JSON.stringify({token: e.target.token.value})
+			body: JSON.stringify({token: token})
 		})
 		.then(response => {
 			if(response.ok)

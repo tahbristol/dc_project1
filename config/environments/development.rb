@@ -61,4 +61,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.api_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "_API_PATH"]
+  config.app_path = ENV["#{ENV["RAILS_ENV"].upcase}" + "_APP_PATH"]
 end
