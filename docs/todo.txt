@@ -33,7 +33,6 @@ Rails API
 	-move logic from controllers to models #DONE
 	-link tweet to source
 	 	-gem install twitter-text
-	-add date/time to tweet
 	-add email confirmation #DONE
 	-implement password reset email
 	-handle n + 1
@@ -41,10 +40,12 @@ Rails API
 	-namespace auth #DONE
 	-add enum for 'marked_as_read' to posts
   -enable email service(sendgrid) #DONE
-  -enable sendgrid in production
-  -figure out auto-login from email confirm
-  -disable confirmation_token after confirmed
+  -enable sendgrid in production #DONE
+  -figure out auto-login from email confirm #DONE
+  -disable confirmation_token after confirmed #DONE
 	-add route to check if email already taken
+  -add delete followed account process
+  -add active job for email conf
 
 
 React 
@@ -62,6 +63,7 @@ React
   -show alert message on successful signup(check your email)
   -show alert on successful account add
   -add method to check if email is already taken
+  -add date/time to tweet
 		
 
 Deploy #DONE
