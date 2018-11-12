@@ -44,7 +44,7 @@ Rails API
   -enable sendgrid in production
   -figure out auto-login from email confirm
   -disable confirmation_token after confirmed
-	
+	-add route to check if email already taken
 
 
 React 
@@ -61,6 +61,7 @@ React
 	-show alert message on login #DONE
   -show alert message on successful signup(check your email)
   -show alert on successful account add
+  -add method to check if email is already taken
 		
 
 Deploy #DONE

@@ -41,14 +41,17 @@ class TwitterFeed < ApplicationRecord
 	
 	def save_tweets_as_posts
 		@tweets.each do |tweet|
-			Post.find_or_create_by(
-				content: tweet.text,
-				timestamp: tweet.created_at,
-				author: tweet.user.name,
-				social_media_platform: "Twitter",
-				marked_as_read: false,
-				followed_account_id: @followed_account.id
-			)
+      if Post.find_by(original_id: tweet.id.to_s, followed_account_id: @followed_account.id).nil?
+  			Post.create(
+  				content: tweet.text,
+  				timestamp: tweet.created_at,
+  				author: tweet.user.name,
+  				social_media_platform: "Twitter",
+  				marked_as_read: false,
+          original_id: tweet.id.to_s,
+  				followed_account_id: @followed_account.id
+  			)
+      end
 		end 
 	end
 end
