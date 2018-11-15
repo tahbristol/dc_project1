@@ -46,7 +46,8 @@ class App extends Component {
 			userPlatformInfo: [],
 			followedAccountsInfo: [],
 			showAuthFail: false,
-			showAuthSuccess: false
+			showAuthSuccess: false,
+			showSignupSuccess: false
 		}
 	}
 	
@@ -158,12 +159,14 @@ class App extends Component {
 		})
 		.then(data => {
 			this.setState({
-				showAuthSuccess: true
+				showAuthFail: false,
+				showSignupSuccess: true
 			})
 		})
 		.catch(error => {
 			this.setState({
-				showAuthFail: true
+				showAuthFail: true,
+				showSignupSuccess: false
 			})
 		})
 	}
@@ -302,7 +305,7 @@ class App extends Component {
 						<Route exact path="/" component={(props) => (
 								this.state.authenticated
 								? <Redirect to={"/userpage"} />
-								: <RegisterSection handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail}  />
+							: <RegisterSection handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail} showSignupSuccess={this.state.showSignupSuccess}  />
 							) } />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
