@@ -15,8 +15,6 @@ const AddAccount = ({addAccount}) => {
 					<Label for="platform">Platform</Label>
 					<Input type="select" name="platform" id="platform">
 						<option>Twitter</option>
-						<option>Facebook</option>
-						<option>Linkedin</option>
 					</Input>
 				</FormGroup>
 				

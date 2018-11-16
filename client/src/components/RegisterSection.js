@@ -12,7 +12,7 @@ class RegisterSection extends Component {
 		return(
 			<section className="download bg-primary text-center" id="download">
 	      <div className="">
-					<AuthStatusDisplay showAuthFail={this.props.showAuthFail} showSignupSuccess={this.props.showSignupSuccess} />
+					<AuthStatusDisplay showAuthFail={this.props.showAuthFail} showSignupSuccess={this.props.showSignupSuccess} user={this.props.user} />
 	        <div className="row">
 	          <div className="col-md-8 mx-auto">
 	            <h2 className="section-heading">Sign Up</h2>

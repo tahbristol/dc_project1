@@ -254,10 +254,12 @@ class App extends Component {
 		.then(response => {
 			if(response.ok){
 				this.getPosts();
-				
-				return response.json();
+				alert("Account Added!")
 			}
-			throw Error(response.statusText);
+			else{
+				alert("We couldn't add the account.")
+				throw Error(response.statusText);
+			}
 		})
 		.catch(error => {
 			console.log(error);
@@ -305,7 +307,7 @@ class App extends Component {
 						<Route exact path="/" component={(props) => (
 								this.state.authenticated
 								? <Redirect to={"/userpage"} />
-							: <RegisterSection handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail} showSignupSuccess={this.state.showSignupSuccess}  />
+							: <RegisterSection user={this.state.user} handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail} showSignupSuccess={this.state.showSignupSuccess}  />
 							) } />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />

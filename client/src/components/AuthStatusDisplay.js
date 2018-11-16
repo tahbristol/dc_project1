@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AuthStatusDisplay = ({showAuthFail, showAuthSuccess, showSignupSuccess}) => {
+const AuthStatusDisplay = ({showAuthFail, showAuthSuccess, showSignupSuccess, user}) => {
 	return(
 		<div>
 			<p className={showAuthFail ? "authFail" : '' + "hide"} >
@@ -8,7 +8,7 @@ const AuthStatusDisplay = ({showAuthFail, showAuthSuccess, showSignupSuccess}) =
 			</p>
 			
 			<p className={showAuthSuccess ? "authSuccess" : '' + "hide"}>
-				Your email and password have been verified.
+				 Successful login.
 			</p>
 			
 			<p className={showSignupSuccess ? "authSuccess" : '' + "hide"}>
