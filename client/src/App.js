@@ -298,6 +298,10 @@ class App extends Component {
     setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
 	}
 	
+	deleteFollowedAccount = (e) => {
+		alert("Delete Account")
+	}
+	
   render() {
     return (
 				<Router>
@@ -325,13 +329,13 @@ class App extends Component {
               ) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+							: <UserPage deleteFollowedAccount={this.deleteFollowedAccount} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
 							) } />
 					</div>
 			</Router>
