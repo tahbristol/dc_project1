@@ -31,7 +31,7 @@ class User < ApplicationRecord
 	before_create :generate_confirmation_token
 	
 	has_many :platforms
-	has_many :followed_accounts, through: :platforms
+	has_many :followed_accounts, through: :platforms, dependent: :destroy
 	
 	def unread_posts
 		Post.joins(followed_account: {platform: :user}).where(users: {id: self.id}).unread.ordered_desc
@@ -48,7 +48,7 @@ class User < ApplicationRecord
 		followed_accounts = self.followed_accounts
 		followed_accounts_info = followed_accounts.collect do |fa|
 			if fa.account_name.present?
-				{accountName: fa.account_name,numPosts: fa.posts.size}
+				{accountName: fa.account_name,numPosts: fa.posts.size, accountId: fa.account_id}
 		 	end
 	 	end
 		 followed_accounts_info

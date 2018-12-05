@@ -109,30 +109,34 @@ class App extends Component {
 				console.log(error);
 			})
 			
-			fetch('/v1/user_followed_accounts_info',
-				{
-					method: 'GET',
-					headers: {
-						'X-User-Email': this.state.user.email,
-						'X-User-Token': this.state.user.authentication_token
-					}
-				})
-			.then(response => {
-				if(response.ok)
-					return response.json();
-				return Error(response.statusText);
-			})
-			.then(followedAccountsInfo => {
-				this.setState({
-					followedAccountsInfo: followedAccountsInfo
-				})
-			})
-			.catch(error => {
-				console.log(error);
-			})
+			this.getUserFollowedAccountsInfo();
 		}
 	}
-		
+	
+	getUserFollowedAccountsInfo = () =>{
+		fetch('/v1/user_followed_accounts_info',
+			{
+				method: 'GET',
+				headers: {
+					'X-User-Email': this.state.user.email,
+					'X-User-Token': this.state.user.authentication_token
+				}
+			})
+		.then(response => {
+			if(response.ok)
+				return response.json();
+			return Error(response.statusText);
+		})
+		.then(followedAccountsInfo => {
+			this.setState({
+				followedAccountsInfo: followedAccountsInfo
+			})
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+	
 	handleSignup = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -298,8 +302,18 @@ class App extends Component {
     setTimeout(()=> {this.setState({showAuthSuccess: false})}, 5000);
 	}
 	
-	deleteFollowedAccount = (e) => {
-		alert("Delete Account")
+	deleteFollowedAccount = (followedAccountId) => {
+		
+		fetch(`/v1/followed_accounts/${followedAccountId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json; charset-utf-8',
+				'X-User-Email': this.state.user.email,
+				'X-User-Token': this.state.user.authentication_token
+			},
+		})
+		
+		this.getUserFollowedAccountsInfo();
 	}
 	
   render() {

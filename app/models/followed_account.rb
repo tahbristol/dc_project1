@@ -15,5 +15,5 @@ class FollowedAccount < ApplicationRecord
 	validates :account_id, presence: true
 	
 	has_many :posts
-  belongs_to :platform
+  belongs_to :platform, dependent: :destroy
 end
