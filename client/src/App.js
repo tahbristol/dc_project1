@@ -312,8 +312,7 @@ class App extends Component {
 				'X-User-Token': this.state.user.authentication_token
 			},
 		})
-		
-		this.getUserFollowedAccountsInfo();
+		this.getPosts()
 	}
 	
   render() {

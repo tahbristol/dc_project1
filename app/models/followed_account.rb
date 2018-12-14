@@ -14,6 +14,15 @@ class FollowedAccount < ApplicationRecord
 	validates :account_name, presence: true
 	validates :account_id, presence: true
 	
+  before_destroy :delete_all_posts
+  
 	has_many :posts
-  belongs_to :platform, dependent: :destroy
+  belongs_to :platform
+  
+  private
+  
+  def delete_all_posts
+    self.posts.destroy_all
+  end
+  
 end
