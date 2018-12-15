@@ -7,12 +7,17 @@ class Signup extends Component {
 		
 	}
 	
+	handleEmailCheck = (e) => {
+		let email = e.target.value
+		this.props.checkForEmail(email)
+	}
+	
 	render(){
 		return(
 			<Form className="registerForm" onSubmit={this.props.handleSignup}>
 				<FormGroup>
 					<Label for="Email">Email</Label>
-					<Input type="email" name="email" id="email" placeholder="" autoComplete="nope"/>
+					<Input type="email" name="email" id="email" placeholder="" autoComplete="nope" onChange={this.handleEmailCheck}/>
 				</FormGroup>
 				 
 				<FormGroup>

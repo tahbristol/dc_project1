@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   namespace :auth do
     resource :sessions, only: [:create, :destroy]
     resource :confirmation, only: [:create]
+    post '/check_email', to: 'email_check#check_email'
   end
 end

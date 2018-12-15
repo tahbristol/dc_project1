@@ -17,7 +17,7 @@ class RegisterSection extends Component {
 	          <div className="col-md-8 mx-auto">
 	            <h2 className="section-heading">Sign Up</h2>
 							
-							<Signup handleSignup={this.props.handleSignup} />
+							<Signup handleSignup={this.props.handleSignup} checkForEmail={this.props.checkForEmail}/>
 							
 	           	<div className="badges">
 	              <a className="badge-link" href="#"><img src="" alt=""></img></a>
