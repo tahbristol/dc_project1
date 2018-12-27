@@ -315,18 +315,8 @@ class App extends Component {
 		this.getPosts()
 	}
 	
-	checkForEmail = (email) => {
-		fetch('/auth/check_email',{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json; charset-utf-8',
-			},
-			body: JSON.stringify({email: email})
-		})
-	}
-	
-  render() {
-    return (
+	render() {
+		return (
 				<Router>
 					<div>
 						<NavBar signedUp={this.state.signedUp} signOut={this.signOut} isAuthenticated={this.state.authenticated} />
@@ -334,7 +324,7 @@ class App extends Component {
 						<Route exact path="/" component={(props) => (
 								this.state.authenticated
 								? <Redirect to={"/userpage"} />
-							: <RegisterSection checkForEmail={this.checkForEmail} user={this.state.user} handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail} showSignupSuccess={this.state.showSignupSuccess}  />
+							: <RegisterSection user={this.state.user} handleSignup={this.handleSignup} showAuthFail={this.state.showAuthFail} showSignupSuccess={this.state.showSignupSuccess}  />
 							) } />
 						<Route exact path="/" render={(props) => <Features posts={this.state.posts} />} />
 						<Route exact path="/" render={ActionCall} />
