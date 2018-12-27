@@ -4,7 +4,7 @@ const AuthStatusDisplay = ({showAuthFail, showAuthSuccess, showSignupSuccess, us
 	return(
 		<div>
 			<p className={showAuthFail ? "authFail" : '' + "hide"} >
-				The email and password could not be verified. Please try again.
+				The email or password could not be verified. Please try again.
 			</p>
 			
 			<p className={showAuthSuccess ? "authSuccess" : '' + "hide"}>

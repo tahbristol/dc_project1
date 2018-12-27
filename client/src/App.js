@@ -148,7 +148,13 @@ class App extends Component {
 				password_confirmation: form.passwordConfirmation.value
 			}
 		}
-		
+		if(data.user.password !== data.user.password_confirmation){
+			this.setState({
+				showAuthFail: true,
+				showSignupSuccess: false
+			})
+			return false
+		}
 		fetch('/v1/users', {
 			method: 'POST',
 			headers: {

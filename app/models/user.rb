@@ -30,7 +30,7 @@ class User < ApplicationRecord
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	before_create :generate_confirmation_token
 	
-	has_many :platforms
+	has_many :platforms, dependent: :destroy
 	has_many :followed_accounts, through: :platforms, dependent: :destroy
 	
 	def unread_posts
