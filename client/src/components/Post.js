@@ -1,37 +1,48 @@
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 
-const Post = ({posts}) => {	
-	{if(!posts.length){
-		return(
-			<div className="card post noPosts">
-				<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
-				<div className="card-body">
-					There are currently no posts. Try adding an account to follow.
-				</div>
-			</div>
-		)
-	}}
-	return(
-		<Masonry className="postContainer">
-			{posts.map((post, idx) => {
-				return(
-					<div className="card post" key={idx}>
-						<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
-						<div className="card-body">
-							<h5 className="card-title">@{post.author}</h5>
-							<p className="card-text">{post.content}</p>
-						</div>
-						<div id="postIcons">
-							<ul>
-								{/*<li><i className="fa fa-retweet fa-2x" aria-hidden="true"></i><br /><small>retweet</small></li>*/}
-								<li><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li>
-							</ul>
-						</div>
+class Post extends Component {
+	constructor(props){
+		super(props)
+	}
+	
+	handleMarkAsRead = (e) => {
+		let postId = e.target.parentElement.getAttribute('postid');
+		this.props.markAsRead(postId);
+	}
+	
+	render(){
+		{if(!this.props.posts.length){
+			return(
+				<div className="card post noPosts">
+					<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
+					<div className="card-body">
+						There are currently no posts. Try adding an account to follow.
 					</div>
-				)})}
-		</Masonry>
-	)
+				</div>
+			)
+		}}
+		return(
+			<Masonry className="postContainer">
+				{this.props.posts.map((post, idx) => {
+					return(
+						<div className="card post" key={idx}>
+							<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
+							<div className="card-body">
+								<h5 className="card-title">@{post.author}</h5>
+								<p className="card-text">{post.content}</p>
+							</div>
+							<div id="postIcons">
+								<ul>
+									{/*<li><i className="fa fa-retweet fa-2x" aria-hidden="true"></i><br /><small>retweet</small></li>*/}
+									<li onClick={this.handleMarkAsRead} postid={post.id}><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li>
+								</ul>
+							</div>
+						</div>
+					)})}
+			</Masonry>
+		)
+	}
 }
 
 export default Post;
