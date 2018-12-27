@@ -10,8 +10,10 @@
 	min-height: 300px;
 }
 
-.postContainer {
-
+.noPosts {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
 }
 
 .card:hover {
