@@ -19,6 +19,10 @@ class FollowedAccount < ApplicationRecord
 	has_many :posts
   belongs_to :platform
   
+  def unread_posts
+    self.posts.where(marked_as_read: false)
+  end
+  
   private
   
   def delete_all_posts

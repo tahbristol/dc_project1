@@ -14,15 +14,23 @@
 #
 
 class Post < ApplicationRecord
-	validates :author, presence: true
-	belongs_to :followed_account
-	
-	scope :unread, -> {
-		where(marked_as_read: false)
-	}
-	
-	scope :ordered_desc, -> {
-		order('timestamp DESC')
-	}
+  validates :author, presence: true
+  belongs_to :followed_account
 
+  scope :unread, lambda {
+    where(marked_as_read: false)
+  }
+
+  scope :ordered_desc, lambda {
+    order('timestamp DESC')
+  }
+
+  def mark_as_read
+    self.marked_as_read = true
+    if save
+      true
+    else
+      false
+    end
+  end
 end

@@ -48,7 +48,7 @@ class User < ApplicationRecord
 		followed_accounts = self.followed_accounts
 		followed_accounts_info = followed_accounts.collect do |fa|
 			if fa.account_name.present?
-				{accountName: fa.account_name,numPosts: fa.posts.size, accountId: fa.account_id}
+				{accountName: fa.account_name,numPosts: fa.unread_posts.size, accountId: fa.account_id}
 		 	end
 	 	end
 		 followed_accounts_info

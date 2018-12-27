@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	
 	namespace :v1 do
-		resources :posts
+		resources :posts, only: [:index]
+    post '/posts/mark_as_read', to: 'posts#mark_as_read'
 		resources :twitter_feed
 		resources :users, only: [:new, :create]
 		resources :followed_accounts, only: [:create, :destroy]
@@ -16,6 +17,5 @@ Rails.application.routes.draw do
   namespace :auth do
     resource :sessions, only: [:create, :destroy]
     resource :confirmation, only: [:create]
-    post '/check_email', to: 'email_check#check_email'
   end
 end
