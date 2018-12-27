@@ -7,22 +7,17 @@ class Signup extends Component {
 		
 	}
 	
-	handleEmailCheck = (e) => {
-		let email = e.target.value
-		this.props.checkForEmail(email)
-	}
-	
 	render(){
 		return(
 			<Form className="registerForm" onSubmit={this.props.handleSignup}>
 				<FormGroup>
 					<Label for="Email">Email</Label>
-					<Input type="email" name="email" id="email" placeholder="" autoComplete="nope" onChange={this.handleEmailCheck}/>
+					<Input type="email" name="email" id="email" placeholder="" autoComplete="off" />
 				</FormGroup>
-				 
+				
 				<FormGroup>
 					<Label for="Password">Password</Label>
-					<Input type="password" name="password" id="password" placeholder="" autoComplete="nope"/>
+					<Input type="password" name="password" id="password" placeholder="" autoComplete="off"/>
 				</FormGroup>
 				 
 				<FormGroup>
