@@ -322,7 +322,7 @@ class App extends Component {
 	}
 	
 	markAsRead = (postId) => {
-		debugger
+		
 		fetch('/v1/posts/mark_as_read', {
 			method: 'POST',
 			headers: {
@@ -331,6 +331,18 @@ class App extends Component {
 				'X-User-Token': this.state.user.authentication_token
 			},
 			body: JSON.stringify({post_id: postId})
+		})
+		.then(response => {
+			if(response.ok)
+				return response;
+			else
+				throw Error(response.statusText);
+		})
+		.then(result => {
+			this.getPosts()
+		})
+		.catch(error => {
+			console.log(error);
 		})
 	}
 	
