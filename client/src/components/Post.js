@@ -35,8 +35,9 @@ class Post extends Component {
 							<div id="postIcons">
 								<ul>
 									{/*<li><i className="fa fa-retweet fa-2x" aria-hidden="true"></i><br /><small>retweet</small></li>*/}
-									<li onClick={this.handleMarkAsRead} postid={post.id}><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li>
-								</ul>
+									<li onClick={this.handleMarkAsRead} postid={post.id}><i className="fa fa-check fa-2x" aria-hidden="true"></i><br /><small>mark as read</small></li><br />
+									<li><a href={post.source_url} target="_blank">Go to tweet</a></li>
+							</ul>
 							</div>
 						</div>
 					)})}
