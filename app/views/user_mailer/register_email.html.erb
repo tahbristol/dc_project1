@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
   </head>
+  
   <body>
-    <h1>Welcome to Stalk Market</h1>
-		<p>Only one step away from getting started.</p>
-    <form action="<%= "#{Rails.configuration.api_path}auth/confirmation/" %>" method="post"><!-- should be api path --->
-      <input type="hidden" name="token" value="<%= @user.confirmation_token %>"></input>
-      <button type="submit">Confirm</button>
-    </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-	</body>
+    <table style="width: 500px; height:400px;">
+      <tbody>
+        <tr>
+          <th style="width: 200px;"></th>
+          <th style="width: 300px"></th>
+        </tr>
+        <tr style="height:60px;"></tr>
+        <tr>
+          <td></td>
+          <td>
+            <div class="confirmContainer" style="width: 300px;height: 400px;border: 2px solid lightgrey;padding: 20px;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);text-align: center;">
+              <img style="width:90px; height: 100px;" src="https://www.dropbox.com/s/aadzo1midjeitu7/binoculars.jpg?dl=1"></img>
+              <h2>Stalk Market</h2>
+              <p style="color: black;">Hello, <%= @user.email %>!</p>
+              <p style="color: black:">We've set up your account. Just confirm your email and you'll be good to go!</p>
+              <form id="confirmation" action="<%= "#{Rails.configuration.api_path}auth/confirmation/" %>" method="post">
+                <input type="hidden" name="token" value="<%= @user.confirmation_token %>"></input>
+                <button style="width: 150px; background-color: #04C86E; border-radius: 5px;" type="submit">Confirm</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ 	</body>
 </html>
