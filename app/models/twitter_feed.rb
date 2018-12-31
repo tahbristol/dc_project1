@@ -49,9 +49,10 @@ class TwitterFeed < ApplicationRecord
   				social_media_platform: "Twitter",
   				marked_as_read: false,
           original_id: tweet.id.to_s,
-  				followed_account_id: @followed_account.id
+  				followed_account_id: @followed_account.id,
+          source_url: tweet.url.normalized_site + tweet.url.normalized_path
   			)
       end
-		end 
+		end
 	end
 end
