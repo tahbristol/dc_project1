@@ -11,8 +11,18 @@ class Post extends Component {
 		this.props.markAsRead(postId);
 	}
 	
+	postTime = (timestamp) => {
+		return new Date(timestamp).toLocaleTimeString();
+	}
+	
+	postDate = (timestamp) => {
+		return new Date(timestamp).toLocaleDateString();
+	}
+	
 	render(){
+		
 		{if(!this.props.posts.length){
+			
 			return(
 				<div className="card post noPosts">
 					<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
@@ -28,6 +38,7 @@ class Post extends Component {
 					return(
 						<div className="card post" key={idx}>
 							<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>
+							<p className="postTimestamp">{this.postDate(post.timestamp) + "-" + this.postTime(post.timestamp)}</p>
 							<div className="card-body">
 								<h5 className="card-title">@{post.author}</h5>
 								<p className="card-text">{post.content}</p>
