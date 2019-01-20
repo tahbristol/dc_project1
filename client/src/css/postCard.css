@@ -8,6 +8,7 @@
 	border-radius: 5px;
 	display: inline-block;
 	min-height: 300px;
+  font-family: 'Raleway', sans-serif;
 }
 
 .noPosts {
@@ -84,4 +85,11 @@ i:hover {
 
 .userPageContainer {
 	margin-top: 150px;
+}
+
+.postTimestamp {
+  margin: 0px;
+  margin-bottom: 20px;
+  padding-left: 225px;
+  font-size: 12px;
 }
