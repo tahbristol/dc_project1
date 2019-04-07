@@ -11,6 +11,7 @@ class Auth::SessionsController < ApplicationController
 		end
 		
 		if start_session
+      UpdateTweetsWorker.perform_async(@user.id)
 			render json: @user.as_json(only: [:email, :authentication_token, :hasFollowedAccounts]), status: :created
 		else
 			head(:unauthorized)
