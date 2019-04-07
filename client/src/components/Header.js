@@ -16,7 +16,7 @@ const Header = ({}) => {
 				 </div>
 				 <div className="col-lg-5 my-auto">
 					 <div className="device-container">
-						 <img id="cardExample" src={cardExample} alt=""></img>
+						 <img id="cardExample" className="img-fluid" src={cardExample} alt=""></img>
 						 <div className="device-mockup iphone6_plus portrait white">
 							 <div className="device">
 								 <div className="screen">
