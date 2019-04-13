@@ -31,7 +31,7 @@ class User < ApplicationRecord
 	before_create :generate_confirmation_token
 	
 	has_many :platforms, dependent: :destroy
-	has_many :followed_accounts, through: :platforms, dependent: :destroy
+	has_many :followed_accounts, through: :platforms
 	
 	def unread_posts
 		Post.joins(followed_account: {platform: :user}).where(users: {id: self.id}).unread.ordered_desc
