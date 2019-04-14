@@ -3,7 +3,7 @@ class V1::UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			UserMailer.register_email(@user).deliver_now
-			render json: @user.as_json(only: [:email, :authentication_token, :hasFollowedAccounts]), status: :created
+			render json: @user.as_json(only: [:email, :authentication_token]), status: :created
 		else
 			head(:not_implemented)
 		end
