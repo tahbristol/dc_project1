@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import profileImage from '../images/avatar1.png';
 
-const UserMenu = ({toggleUserMenu, deleteUserAccount}) => {
+const UserMenu = ({toggleUserMenu, deleteUserAccount, user}) => {
 	return(
 		<div className="card userMenu">
 			<div className="card-body">
 				<div className="profileHeading">
-					<h5 className="card-title">User Email</h5>
+					<h5 className="card-title">{user.email}</h5>
 					<img id="profileImage" src={profileImage} alt="profile"></img>
 				</div>
 				
