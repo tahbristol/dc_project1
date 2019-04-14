@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_31_051925) do
+ActiveRecord::Schema.define(version: 2019_04_14_080541) do
 
   create_table "followed_accounts", force: :cascade do |t|
     t.string "account_id"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2018_12_31_051925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authentication_token", limit: 30
-    t.boolean "hasFollowedAccounts"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true

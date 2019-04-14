@@ -16,7 +16,6 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  authentication_token   :string(30)
-#  hasFollowedAccounts    :boolean
 #
 
 class User < ApplicationRecord
@@ -29,7 +28,7 @@ class User < ApplicationRecord
 	
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	before_create :generate_confirmation_token
-	
+  
 	has_many :platforms, dependent: :destroy
 	has_many :followed_accounts, through: :platforms
 	
