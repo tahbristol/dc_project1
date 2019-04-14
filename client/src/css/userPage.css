@@ -33,3 +33,11 @@ i {
 .profileHeading {
 	margin: 20px 0px 30px 0px;
 }
+
+#deleteUserAccount {
+  color: red;
+}
+
+#deleteUserAccount:hover {
+  font-size: 85%;
+}

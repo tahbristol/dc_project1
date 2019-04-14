@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 		resources :posts, only: [:index]
     post '/posts/mark_as_read', to: 'posts#mark_as_read'
 		resources :twitter_feed
-		resources :users, only: [:new, :create]
+		resources :users, only: [:new, :create, :destroy]
 		resources :followed_accounts, only: [:create, :destroy]
 		post '/start_feed_lookup', to: 'twitter_feed#start_feed_lookup'
 		get '/user_platform_info', to: 'users#user_platform_info'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import profileImage from '../images/avatar1.png';
 
-const UserMenu = ({toggleUserMenu}) => {
+const UserMenu = ({toggleUserMenu, deleteUserAccount}) => {
 	return(
 		<div className="card userMenu">
 			<div className="card-body">
@@ -27,6 +27,7 @@ const UserMenu = ({toggleUserMenu}) => {
 				</div>
 				
 			</div>
+			<small onClick={(e) => { if (window.confirm('Are you sure you wish to delete this account?')) deleteUserAccount()}} id="deleteUserAccount">Delete account?</small>
 		</div>
 	)
 }

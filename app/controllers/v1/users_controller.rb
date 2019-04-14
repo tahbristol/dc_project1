@@ -17,6 +17,15 @@ class V1::UsersController < ApplicationController
 		render json: current_user.user_followed_accounts_info.compact
 	end
 	
+	def destroy
+	  @user = current_user
+	  if current_user.destroy
+		  head(:ok)
+  	else
+  		head(:bad_request)
+  	end
+	end
+	
 	private
 	
 		def user_params

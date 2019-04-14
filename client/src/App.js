@@ -346,6 +346,27 @@ class App extends Component {
 		})
 	}
 	
+	deleteUserAccount = () => {
+			fetch('/v1/users/delete', {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json; charset-utf-8',
+					'X-User-Email': this.state.user.email,
+					'X-User-Token': this.state.user.authentication_token
+				},
+				body: JSON.stringify({email: this.state.user.email})
+			})
+			.then(response => {
+				if(!response.ok)
+					throw Error(response.statusText);
+				window.location = '/';
+			})
+			.catch(error => {
+				alert('An error has occured. Please contact admin or try again.')
+				return false
+			})
+	}
+	
 	render() {
 		return (
 				<Router>
@@ -373,13 +394,13 @@ class App extends Component {
               ) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} />
+							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 							) } />
 					</div>
 			</Router>
