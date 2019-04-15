@@ -11,7 +11,7 @@ class Auth::SessionsController < ApplicationController
 		end
 		
 		if start_session
-      UpdateTweetsWorker.perform_async(@user.id)
+      start_update_tweet_cron
 			render json: @user.as_json(only: [:email, :authentication_token]), status: :created
 		else
 			head(:unauthorized)
@@ -39,5 +39,16 @@ class Auth::SessionsController < ApplicationController
         false
 			end
 		end
+    
+    def start_update_tweet_cron
+      cron_hash = {'update_tweets' => {
+                    'class' => 'UpdateTweetsWorker',
+                    'cron' => '0 * * * * *',
+                    'args' => [@user.id]
+                    }
+                  }
+      
+      Sidekiq::Cron::Job.load_from_hash(cron_hash)
+    end
 	
 end

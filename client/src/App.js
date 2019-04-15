@@ -239,6 +239,7 @@ class App extends Component {
 				
 			this.setState({userMenu: userMenu})
 		})
+		this.getPosts()
 	}
 	
 	addAccount = (e) => {
