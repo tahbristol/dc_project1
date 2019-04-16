@@ -43,7 +43,7 @@ class Auth::SessionsController < ApplicationController
     def start_update_tweet_cron
       cron_hash = {'update_tweets' => {
                     'class' => 'UpdateTweetsWorker',
-                    'cron' => '0 * * * * *',
+                    'cron' => '0 * * * *',
                     'args' => [@user.id]
                     }
                   }
