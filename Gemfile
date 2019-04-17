@@ -57,3 +57,6 @@ gem 'twitter'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem "sidekiq-cron", "~> 1.1"
+
+# Security patches
+gem "actionview", ">= 5.2.2.1"

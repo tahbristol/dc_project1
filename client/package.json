@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.0.1",
-    "bootstrap": "^4.1.1",
+    "bootstrap": ">=4.3.1",
     "jest-cli": "^23.6.0",
+    "lodash": ">=4.17.11",
+    "sshpk": ">=1.13.2",
+    "cryptiles": ">=4.1.2",
+    "extend": ">=3.0.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-masonry-component": "^6.2.1",

@@ -244,6 +244,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionview (>= 5.2.2.1)
   annotate
   bootsnap (>= 1.1.0)
   byebug
