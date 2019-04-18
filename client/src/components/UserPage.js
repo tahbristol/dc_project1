@@ -22,7 +22,7 @@ const UserPage = ({showAuthSuccess, posts, toggleUserMenu, user, userMenu, userP
 						<UserMenu user={user} toggleUserMenu={toggleUserMenu} deleteUserAccount={deleteUserAccount}/>
 					</Col>
 					<Col lg="9" className={userMenu.showPosts ? "show" : "hide"}>
-						<Post posts={posts} markAsRead={markAsRead}/>
+						<Post user={user} posts={posts} markAsRead={markAsRead}/>
 					</Col>
 					<Col lg="9" className={userMenu.showPlatforms ? "show" : "hide"}>
 						<Platform userPlatformInfo={userPlatformInfo}/>

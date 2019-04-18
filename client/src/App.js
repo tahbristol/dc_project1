@@ -64,29 +64,6 @@ class App extends Component {
 	}
 	
 	getPosts(){
-		if(this.state.authenticated){
-			fetch('/v1/posts', 
-				{
-					method: 'GET',
-					headers: {
-						'X-User-Email': this.state.user.email,
-						'X-User-Token': this.state.user.authentication_token
-						}
-				})
-			.then(response => {
-				if(response.ok)
-					return response.json();
-				return Error(response.statusText);
-				})
-			.then(posts => {
-				this.setState({
-					posts: posts || [],
-				})
-			})
-			.catch(error => {
-				console.log(error);
-			})
-			
 			fetch('/v1/user_platform_info',
 				{
 					method: 'GET',
@@ -111,7 +88,7 @@ class App extends Component {
 			
 			this.getUserFollowedAccountsInfo();
 		}
-	}
+	
 	
 	getUserFollowedAccountsInfo = () =>{
 		fetch('/v1/user_followed_accounts_info',
