@@ -34,9 +34,9 @@ class App extends Component {
 		super(props)
 		
 		this.state = {
-			posts: [],
-			user: {},
-			authenticated: false,
+			
+			user: {email: "",authentication_token: ""},
+			authenticated: true,
 			userMenu: {
 				showPlatforms: false,
 				showFollowedAccounts: false,
