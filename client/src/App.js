@@ -371,13 +371,13 @@ class App extends Component {
               ) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
+								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess}  addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
+							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount}  addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 							) } />
 					</div>
 			</Router>
