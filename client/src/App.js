@@ -66,7 +66,6 @@ class App extends Component {
 	getPosts(){
 			fetch('/v1/user_platform_info',
 				{
-					method: 'GET',
 					headers: {
 						'X-User-Email': this.state.user.email,
 						'X-User-Token': this.state.user.authentication_token
