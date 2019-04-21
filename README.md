@@ -10,11 +10,12 @@
     -`gem install rake`
 * App Setup
 
-   -`rake db:schema:load`
-     * creates tables
+   -`rake ready_api`
+   
+     * runs bundle install, and creates tables
      
    -`rake start` to run the app on the first time. 
    
-     * runs npm, bundle install, starts node server, starts rails server
+     * runs npm starts node server, starts rails server
      
    -`rake servers` from then on.
