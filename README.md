@@ -6,6 +6,8 @@
 * System dependencies
 
     -postgresql https://www.postgresql.org/download/
+    
+    -node.js https://nodejs.org/en/download/
 
     -`gem install bundler`
    
