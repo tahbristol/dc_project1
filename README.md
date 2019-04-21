@@ -5,6 +5,8 @@
     -2.5
 * System dependencies
 
+    -postgresql https://www.postgresql.org/download/
+
     -`gem install bundler`
    
     -`gem install rake`
