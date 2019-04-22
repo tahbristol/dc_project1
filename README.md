@@ -11,7 +11,6 @@
 
     -`gem install bundler`
    
-    -`gem install rake`
 * App Setup
 
    -`bundle install`
