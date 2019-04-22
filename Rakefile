@@ -24,7 +24,7 @@ end
 namespace :ready_api do
 	desc 'Wire up rails API'
 	task :development do
-		exec 'bundle install && rake db:schema:load && rake db:seed'
+		exec 'rake db:schema:load && rake db:seed'
 	end
 end
 
