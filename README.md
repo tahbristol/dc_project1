@@ -2,7 +2,7 @@
 
 * Ruby version
 
-    -2.5
+    -2.5.1
 * System dependencies
 
     -postgresql https://www.postgresql.org/download/
