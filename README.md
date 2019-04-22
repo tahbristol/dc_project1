@@ -14,12 +14,19 @@
     -`gem install rake`
 * App Setup
 
+   -`bundle install`
+
    -`rake ready_api`
    
-     * runs bundle install, and creates tables
+     * creates tables, loads seed data(if any)
      
    -`rake start` to run the app on the first time. 
    
      * runs npm starts node server, starts rails server
      
    -`rake servers` from then on.
+   
+* Authentication
+
+   -Sign up, you will recieve confirmation email
+   -Confirm and you will be logged into the app
