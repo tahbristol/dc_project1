@@ -35,8 +35,8 @@ class App extends Component {
 		
 		this.state = {
 			
-			user: {email: "",authentication_token: ""},
-			authenticated: true,
+			user: {},
+			authenticated: false,
 			userMenu: {
 				showPlatforms: false,
 				showFollowedAccounts: false,
