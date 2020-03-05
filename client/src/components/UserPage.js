@@ -8,7 +8,7 @@ import AddAccount from './AddAccount';
 import FollowedAccount from './FollowedAccount';
 import AuthStatusDisplay from './AuthStatusDisplay';
 
-const UserPage = ({showAuthSuccess, posts, toggleUserMenu, user, userMenu, userPlatformInfo, addAccount, followedAccountsInfo, deleteFollowedAccount, markAsRead, deleteUserAccount}) => {
+const UserPage = ({showAuthSuccess,  toggleUserMenu, user, userMenu, userPlatformInfo, addAccount, followedAccountsInfo, deleteFollowedAccount, markAsRead, deleteUserAccount}) => {
 		return(
 			<Container fluid className="userPage">
 				<Row>
@@ -22,7 +22,7 @@ const UserPage = ({showAuthSuccess, posts, toggleUserMenu, user, userMenu, userP
 						<UserMenu user={user} toggleUserMenu={toggleUserMenu} deleteUserAccount={deleteUserAccount}/>
 					</Col>
 					<Col lg="9" className={userMenu.showPosts ? "show" : "hide"}>
-						<Post posts={posts} markAsRead={markAsRead}/>
+						<Post user={user}  markAsRead={markAsRead}/>
 					</Col>
 					<Col lg="9" className={userMenu.showPlatforms ? "show" : "hide"}>
 						<Platform userPlatformInfo={userPlatformInfo}/>

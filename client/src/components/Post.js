@@ -4,6 +4,10 @@ import Masonry from 'react-masonry-component';
 class Post extends Component {
 	constructor(props){
 		super(props)
+		this.state = {
+			posts:[]
+		}
+		this.getPosts()
 	}
 	
 	handleMarkAsRead = (e) => {
@@ -19,9 +23,32 @@ class Post extends Component {
 		return new Date(timestamp).toLocaleDateString();
 	}
 	
-	render(){
+	getPosts = ()=>{
 		
-		{if(!this.props.posts.length){
+		fetch('/v1/posts', 
+		{
+			headers: {
+				'X-User-Email': this.props.user.email,
+				'X-User-Token': this.props.user.authentication_token
+				}
+		})
+	.then(response => {
+		if(response.ok)
+			return response.json();
+		return Error(response.statusText);
+		})
+	.then(posts => {
+		this.setState({
+			posts: posts || [],
+		})
+	})
+	.catch(error => {
+		console.log(error);
+	})
+	}
+
+	render(){
+		{if(!this.state.posts.length){
 			
 			return(
 				<div className="card post noPosts">
@@ -34,7 +61,8 @@ class Post extends Component {
 		}}
 		return(
 			<Masonry className="postContainer">
-				{this.props.posts.map((post, idx) => {
+				{this.state.posts.map((post, idx) => {
+					console.log(post)
 					return(
 						<div className="card post" key={idx}>
 							<i className="fab fa-twitter-square fa-3x" aria-hidden="true"></i>

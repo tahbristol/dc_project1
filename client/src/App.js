@@ -34,7 +34,7 @@ class App extends Component {
 		super(props)
 		
 		this.state = {
-			posts: [],
+			
 			user: {},
 			authenticated: false,
 			userMenu: {
@@ -64,32 +64,8 @@ class App extends Component {
 	}
 	
 	getPosts(){
-		if(this.state.authenticated){
-			fetch('/v1/posts', 
-				{
-					method: 'GET',
-					headers: {
-						'X-User-Email': this.state.user.email,
-						'X-User-Token': this.state.user.authentication_token
-						}
-				})
-			.then(response => {
-				if(response.ok)
-					return response.json();
-				return Error(response.statusText);
-				})
-			.then(posts => {
-				this.setState({
-					posts: posts || [],
-				})
-			})
-			.catch(error => {
-				console.log(error);
-			})
-			
 			fetch('/v1/user_platform_info',
 				{
-					method: 'GET',
 					headers: {
 						'X-User-Email': this.state.user.email,
 						'X-User-Token': this.state.user.authentication_token
@@ -111,7 +87,7 @@ class App extends Component {
 			
 			this.getUserFollowedAccountsInfo();
 		}
-	}
+	
 	
 	getUserFollowedAccountsInfo = () =>{
 		fetch('/v1/user_followed_accounts_info',
@@ -395,13 +371,13 @@ class App extends Component {
               ) } />
 						<Route exact path="/userpage" render={(props) => (
 								this.state.authenticated
-								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
+								? <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} showAuthSuccess={this.state.showAuthSuccess}  addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 								: <Redirect to={"/login"} />
 							) } />
 						<Route exact path="/signout" render={() => (
 								!this.state.authenticated
 								? <Redirect to={"/"} />
-							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount} posts={this.state.posts} addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
+							: <UserPage markAsRead={this.markAsRead} deleteFollowedAccount={this.deleteFollowedAccount}  addAccount={this.addAccount} followedAccountsInfo={this.state.followedAccountsInfo} userPlatformInfo={this.state.userPlatformInfo} toggleUserMenu={this.toggleUserMenu} user={this.state.user} userMenu={this.state.userMenu} deleteUserAccount={this.deleteUserAccount}/>
 							) } />
 					</div>
 			</Router>
