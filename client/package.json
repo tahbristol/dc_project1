@@ -6,7 +6,7 @@
     "@material-ui/core": "^3.0.1",
     "bootstrap": ">=4.3.1",
     "jest-cli": "^23.6.0",
-    "lodash": ">=4.17.11",
+    "lodash": ">=4.17.19",
     "sshpk": ">=1.13.2",
     "cryptiles": ">=4.1.2",
     "extend": ">=3.0.2",
